@@ -2,14 +2,7 @@
 
  sudo apt install git zsh stow
 
-cd .config
-
-stow -t ../../.config mako
-stow -t ../../.config/mako mako
-stow -t ../../.config/sway sway
-stow -t ../../.config/waybar waybar
-stow -t ../../.config/waybar waybar
-stow -t ../../.config/nvim nvim
+stow -t ../.config .config
 
 if [ ! -L ~/.zshrc ]; then
 ln -s ~/.dotfiles.d/zsh/.zshrc ~/.zshrc
