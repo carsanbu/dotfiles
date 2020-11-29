@@ -1,6 +1,8 @@
 #!/bin/bash
 
-sudo apt install git zsh stow neovim python3-pip python3-dev python3-setuptools
+sudo apt install git zsh stow neovim python3-pip python3-dev python3-setuptools xss-lock
+# Dependencias i3lock-color 
+sudo apt install imagemagick autoconf gcc make pkg-config libpam0g-dev libcairo2-dev libfontconfig1-dev libxcb-composite0-dev libev-dev libx11-xcb-dev libxcb-xkb-dev libxcb-xinerama0-dev libxcb-randr0-dev libxcb-image0-dev libxcb-util0-dev libxcb-xrm-dev libxkbcommon-dev libxkbcommon-x11-dev libjpeg-dev  
 
 stow -t ../.config .config
 
@@ -31,4 +33,17 @@ Exec='$HOME'/.local/bin/qtile
 Type=Application
 Keywords=wm;tiling
 EOF' | sudo tee /usr/share/xsessions/qtile.desktop > /dev/null 
+
+mkdir .install && cd .install
+
+# Lockscreen 
+git clone https://github.com/Raymo111/i3lock-color.git && cd i3lock-color
+chmod +x build.sh && ./build.sh
+chmod +x install-i3lock-color.sh && ./install-i3lock-color.sh
+
+cd ..
+git clone https://github.com/jeffmhubbard/multilockscreen && cd multilockscreen
+sudo install -Dm 755 multilockscreen /usr/local/bin/multilockscreen
+multilockscreen -u ~/Imágenes/wallpapers/1606483234331.jpg
+
 
