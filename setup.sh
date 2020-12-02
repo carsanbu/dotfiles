@@ -1,6 +1,6 @@
 #!/bin/bash
 
-sudo apt install git zsh stow neovim python3-pip python3-dev python3-setuptools xss-lock
+sudo apt install git curl zsh stow neovim python3-pip python3-dev python3-setuptools xss-lock conky
 # Dependencias i3lock-color 
 sudo apt install imagemagick autoconf gcc make pkg-config libpam0g-dev libcairo2-dev libfontconfig1-dev libxcb-composite0-dev libev-dev libx11-xcb-dev libxcb-xkb-dev libxcb-xinerama0-dev libxcb-randr0-dev libxcb-image0-dev libxcb-util0-dev libxcb-xrm-dev libxkbcommon-dev libxkbcommon-x11-dev libjpeg-dev  
 
@@ -34,7 +34,20 @@ Type=Application
 Keywords=wm;tiling
 EOF' | sudo tee /usr/share/xsessions/qtile.desktop > /dev/null 
 
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+
 mkdir .install && cd .install
+
+# Alacritty
+git clone https://github.com/alacritty/alacritty.git && cd alacritty
+rustup override set stable
+rustup update stable
+cargo build --release
+
+sudo cp target/release/alacritty /usr/local/bin # or anywhere else in $PATH
+sudo cp extra/logo/alacritty-term.svg /usr/share/pixmaps/Alacritty.svg
+sudo desktop-file-install extra/linux/Alacritty.desktop
+sudo update-desktop-database
 
 # Lockscreen 
 git clone https://github.com/Raymo111/i3lock-color.git && cd i3lock-color
