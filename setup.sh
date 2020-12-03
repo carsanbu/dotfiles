@@ -1,6 +1,6 @@
 #!/bin/bash
 
-sudo apt install git curl zsh stow neovim python3-pip python3-dev python3-setuptools xss-lock conky
+sudo apt install git zsh stow neovim python3-pip python3-dev python3-setuptools xss-lock dunst conky-std
 # Dependencias i3lock-color 
 sudo apt install imagemagick autoconf gcc make pkg-config libpam0g-dev libcairo2-dev libfontconfig1-dev libxcb-composite0-dev libev-dev libx11-xcb-dev libxcb-xkb-dev libxcb-xinerama0-dev libxcb-randr0-dev libxcb-image0-dev libxcb-util0-dev libxcb-xrm-dev libxkbcommon-dev libxkbcommon-x11-dev libjpeg-dev  
 

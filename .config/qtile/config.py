@@ -82,7 +82,7 @@ keys = [
     Key([mod, "control"], "r", lazy.restart(), desc="Restart qtile"),
     Key([mod, "control"], "q", lazy.shutdown(), desc="Shutdown qtile"),
     #Key([mod], "r", lazy.spawncmd(), desc="Spawn a command using a prompt widget"),
-    Key([mod], "r", lazy.spawn("krunner")),
+    Key([mod], "r", lazy.spawn('qdbus org.kde.krunner /App display')),
     # Sound
     Key([], "XF86AudioMute", lazy.spawn("amixer -q set Master toggle")),
     Key([], "XF86AudioLowerVolume", lazy.spawn("amixer -c 0 sset Master 1- unmute")),
@@ -114,22 +114,23 @@ for i, (name, kwargs) in enumerate(group_names, 1):
     keys.append(Key([mod], str(i), lazy.group[name].toscreen()))        # Switch to another group
     keys.append(Key([mod, "shift"], str(i), lazy.window.togroup(name))) # Send current window to another group
 
-
-
+main_color = '9cff4d'
+# https://www.flickr.com/photos/12449830@N00/419498290
+# https://www.flickr.com/photos/25027666@N02/5389270117
 layout_theme = {'border_width': 2,
                 'margin': 6,
-                'border_focus': '0x9cff4d', #'A54242',
+                'border_focus': main_color,  #'A54242',
                 'border_normal': '1D2330'
                 }
 
 layouts = [
     layout.MonadTall(**layout_theme),
     layout.Max(**layout_theme),
-    layout.Floating(**layout_theme)
+    layout.Floating(**layout_theme),
     # layout.Stack(num_stacks=2),
     # Try more layouts by unleashing below layouts.
     # layout.Bsp(),
-    # layout.Columns(),
+    # layout.Columns(**layout_theme),
     # layout.Matrix(),
     # layout.MonadTall(),
     # layout.MonadWide(),
@@ -141,7 +142,7 @@ layouts = [
 ]
 
 widget_defaults = dict(
-    font='sans',
+    font='Droid Sans',
     fontsize=12,
     padding=3,
 )
@@ -177,34 +178,57 @@ w = [
         widget.QuickExit(default_text='⏻'),
     ]
 w2 = [
-        widget.GroupBox(),
-        widget.Prompt(),
+        widget.GroupBox(
+            active=main_color),
+        widget.Prompt(
+            foreground=main_color),
         widget.Chord(
             chords_colors={ 'launch': ("#ff0000", "#ffffff") },
             name_transform=lambda name: name.upper(),
+            foreground=main_color,
         ),
-        widget.WindowName(),
-        widget.Systray(),
-        widget.CurrentLayout(),
-        widget.TextBox(''),
+        widget.WindowName(
+            foreground=main_color,
+            ),
+        widget.Systray(
+            foreground=main_color,
+            ),
+        widget.CurrentLayout(
+            foreground=main_color,
+            ),
+        widget.TextBox('',
+            foreground=main_color,
+            ),
         widget.Battery(
             energy_now_file='charge_now',
             energy_full_file='charge_full',
             power_now_file='current_now',
             charge_char='↑',
             discharge_char='↓',
+            foreground=main_color,
         ),
-        widget.GenPollText(func=bt_status, update_interval=5, mouse_callbacks={'Button1': bt_mouse_click}),
-        widget.TextBox(text = ' ', padding = 0),
-        widget.Volume(padding = 5),
-        widget.Clock(format='%Y-%m-%d %a %I:%M %p'),
-        widget.QuickExit(default_text='⏻'),
+        widget.GenPollText(func=bt_status, update_interval=5,
+            mouse_callbacks={'Button1': bt_mouse_click},
+            foreground=main_color,
+        ),
+        widget.TextBox(text = ' ', padding = 0,
+            foreground=main_color,
+        ),
+        widget.Volume(padding = 5,
+            foreground=main_color,
+        ),
+        widget.Clock(format='%Y-%m-%d %a %I:%M %p',
+            foreground=main_color,
+        ),
+        widget.QuickExit(default_text='⏻',
+            foreground=main_color,
+        ),
     ]
 
 
 screens = [
-    Screen(top=bar.Bar(w, 24, background='#000000', opacity=0.8)),
-    Screen(top=bar.Bar(w2, 24, background='#000000', opacity=0.8))
+    Screen(top=bar.Bar(w2, 24, background='#000000', opacity=1)),
+    Screen(top=bar.Bar(w, 24, background='#000000', opacity=1))
 ]
 
 
