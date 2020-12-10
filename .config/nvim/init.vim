@@ -19,7 +19,12 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'Raimondi/delimitMate'
 Plug 'ternjs/tern_for_vim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+<<<<<<< Updated upstream
 Plug 'chrisbra/colorizer'
+=======
+Plug 'airblade/vim-gitgutter'
+
+>>>>>>> Stashed changes
 call plug#end()
 
 filetype plugin indent on
@@ -89,4 +94,17 @@ endif
 " YouCompleteMe
 let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py'
 
+<<<<<<< Updated upstream
 let g:coc_global_extensions=['coc-tsserver', 'coc-css', 'coc-html', 'coc-json', 'coc-clangd', 'coc-cmake', 'coc-markdownlint', 'coc-python', 'coc-sh', 'coc-rls', 'coc-xml', 'coc-yaml']
+=======
+let g:netrw_banner = 0
+let g:netrw_liststyle = 3
+let g:netrw_browse_split = 4
+let g:netrw_altv = 1
+let g:netrw_winsize = 25
+augroup ProjectDrawer
+		autocmd!
+		autocmd VimEnter *Vexplore
+augroup END
+
+>>>>>>> Stashed changes
