@@ -115,12 +115,14 @@ for i, (name, kwargs) in enumerate(group_names, 1):
     keys.append(Key([mod, "shift"], str(i), lazy.window.togroup(name))) # Send current window to another group
 
 main_color = '9cff4d'
+yellow = 'f3e500'
+gray = '1D2330'
 # https://www.flickr.com/photos/12449830@N00/419498290
 # https://www.flickr.com/photos/25027666@N02/5389270117
 layout_theme = {'border_width': 2,
                 'margin': 6,
                 'border_focus': main_color,  #'A54242',
-                'border_normal': '1D2330'
+                'border_normal': gray
                 }
 
 layouts = [
@@ -145,6 +147,7 @@ widget_defaults = dict(
     font='Droid Sans',
     fontsize=12,
     padding=3,
+    foreground=main_color
 )
 
 def bt_status():
@@ -153,14 +156,19 @@ def bt_mouse_click(qtile):
     subprocess.run(['/home/carlos/.local/bin/system-bluetooth-bluetoothctl.sh', '--toggle'])
 
 extension_defaults = widget_defaults.copy()
-w = [
-        widget.GroupBox(),
-        widget.Prompt(),
+w1 = [
+        widget.WindowName(),
+        widget.GroupBox(
+            active=main_color,
+            this_current_screen_border=yellow,
+            this_screen_border=main_color,
+            other_screen_border=gray,
+            highlight_method='line'),
         widget.Chord(
             chords_colors={ 'launch': ("#ff0000", "#ffffff") },
             name_transform=lambda name: name.upper(),
         ),
-        widget.WindowName(),
+        widget.Spacer(),
         widget.Systray(),
         widget.CurrentLayout(),
         widget.TextBox(''),
@@ -171,64 +179,51 @@ w = [
             charge_char='↑',
             discharge_char='↓',
         ),
-        widget.GenPollText(func=bt_status, update_interval=5, mouse_callbacks={'Button1': bt_mouse_click}),
+        widget.GenPollText(func=bt_status, update_interval=5,
+            mouse_callbacks={'Button1': bt_mouse_click},
+        ),
         widget.TextBox(text = ' ', padding = 0),
         widget.Volume(padding = 5),
-        widget.Clock(format='%Y-%m-%d %a %I:%M %p'),
+        widget.Clock(format='%H:%M',
+        ),
         widget.QuickExit(default_text='⏻'),
     ]
 w2 = [
+        widget.WindowName(),
         widget.GroupBox(
-            active=main_color),
-        widget.Prompt(
-            foreground=main_color),
+            active=main_color,
+            this_current_screen_border=yellow,
+            this_screen_border=main_color,
+            other_screen_border=gray,
+            highlight_method='line'),
         widget.Chord(
             chords_colors={ 'launch': ("#ff0000", "#ffffff") },
             name_transform=lambda name: name.upper(),
-            foreground=main_color,
         ),
-        widget.WindowName(
-            foreground=main_color,
-            ),
-        widget.Systray(
-            foreground=main_color,
-            ),
-        widget.CurrentLayout(
-            foreground=main_color,
-            ),
-        widget.TextBox('',
-            foreground=main_color,
-            ),
+        widget.Spacer(),
+        widget.Systray(),
+        widget.CurrentLayout(),
+        widget.TextBox(''),
         widget.Battery(
             energy_now_file='charge_now',
             energy_full_file='charge_full',
             power_now_file='current_now',
             charge_char='↑',
             discharge_char='↓',
-            foreground=main_color,
         ),
         widget.GenPollText(func=bt_status, update_interval=5,
             mouse_callbacks={'Button1': bt_mouse_click},
-            foreground=main_color,
         ),
-        widget.TextBox(text = ' ', padding = 0,
-            foreground=main_color,
+        widget.TextBox(text = ' ', padding = 0),
+        widget.Volume(padding = 5),
+        widget.Clock(format='%H:%M',
         ),
-        widget.Volume(padding = 5,
-            foreground=main_color,
-        ),
-        widget.Clock(format='%Y-%m-%d %a %I:%M %p',
-            foreground=main_color,
-        ),
-        widget.QuickExit(default_text='⏻',
-            foreground=main_color,
-        ),
+        widget.QuickExit(default_text='⏻'),
     ]
 
-
 screens = [
-    Screen(top=bar.Bar(w2, 24, background='#000000', opacity=1)),
-    Screen(top=bar.Bar(w, 24, background='#000000', opacity=1))
+    Screen(top=bar.Bar(w1, 28, background='#000000', opacity=1)),
+    Screen(top=bar.Bar(w2, 28, background='#000000', opacity=1))
 ]
 
 

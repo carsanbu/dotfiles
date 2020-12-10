@@ -5,6 +5,7 @@ sudo apt install git zsh stow neovim python3-pip python3-dev python3-setuptools 
 sudo apt install imagemagick autoconf gcc make pkg-config libpam0g-dev libcairo2-dev libfontconfig1-dev libxcb-composite0-dev libev-dev libx11-xcb-dev libxcb-xkb-dev libxcb-xinerama0-dev libxcb-randr0-dev libxcb-image0-dev libxcb-util0-dev libxcb-xrm-dev libxkbcommon-dev libxkbcommon-x11-dev libjpeg-dev  
 
 stow -t ../.config .config
+stow -t ../.local .local
 
 if [ ! -L ~/.zshrc ]; then
 ln -s ~/.dotfiles.d/zsh/.zshrc ~/.zshrc
@@ -39,6 +40,7 @@ curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 mkdir .install && cd .install
 
 # Alacritty
+# TODO: Comprobar que alacrity no está instalado
 git clone https://github.com/alacritty/alacritty.git && cd alacritty
 rustup override set stable
 rustup update stable

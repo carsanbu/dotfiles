@@ -12,13 +12,14 @@ call plug#begin('~/.config/nvim/plugged')
 " Custom Bundles
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'frankier/neovim-colors-solarized-truecolor-only'
-Plug 'Valloric/YouCompleteMe'
+"Plug 'Valloric/YouCompleteMe'
 Plug 'tomasr/molokai'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'Raimondi/delimitMate'
 Plug 'ternjs/tern_for_vim'
-
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'chrisbra/colorizer'
 call plug#end()
 
 filetype plugin indent on
@@ -30,7 +31,7 @@ syntax on     " Activa coloreado de sintaxis.
 set background=dark 
 "set background=light
 
-colorscheme molokai " Esquema de color
+colorscheme isotopo " Esquema de color
 
 " Configuración de colores
 if has('nvim')
@@ -87,3 +88,5 @@ endif
 " Configuración de plugins
 " YouCompleteMe
 let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py'
+
+let g:coc_global_extensions=['coc-tsserver', 'coc-css', 'coc-html', 'coc-json', 'coc-clangd', 'coc-cmake', 'coc-markdownlint', 'coc-python', 'coc-sh', 'coc-rls', 'coc-xml', 'coc-yaml']

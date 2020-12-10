@@ -1,0 +1,34 @@
+# http://terminal.sexy
+colors:
+  # Default colors
+  primary:
+    background: '0x000000'
+    foreground: '0xd0d0d0'
+
+  # Normal colors
+  normal:
+    black:   '0x000000'
+    red:     '0xff4d4d'
+    green:   '0x9cff4d'
+    yellow:  '0xf3e500'  #'0x841091'
+    blue:    '0x4d91ff'
+    magenta: '0xd84dff'
+    cyan:    '0x4dffff'
+    white:   '0xd0d0d0'
+
+  # Bright colors
+  bright:
+    black:   '0x808080'
+    red:     '0xff4d4d'
+    green:   '0x9cff4d'
+    yellow:  '0xf3e500' #  '0x841091'
+    blue:    '0x4d91ff'
+    magenta: '0xd84dff'
+    cyan:    '0x4dffff'
+    white:   '0xffffff'
+
+# Background opacity
+#
+# Window opacity as a floating point number from `0.0` to `1.0`.
+# The value `0.0` is completely transparent and `1.0` is opaque.
+background_opacity: 0.5
