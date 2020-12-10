@@ -128,7 +128,7 @@ layout_theme = {'border_width': 2,
 layouts = [
     layout.MonadTall(**layout_theme),
     layout.Max(**layout_theme),
-    layout.Floating(**layout_theme),
+    #layout.Floating(**layout_theme),
     # layout.Stack(num_stacks=2),
     # Try more layouts by unleashing below layouts.
     # layout.Bsp(),
@@ -168,9 +168,9 @@ w1 = [
             chords_colors={ 'launch': ("#ff0000", "#ffffff") },
             name_transform=lambda name: name.upper(),
         ),
+        widget.CurrentLayoutIcon(scale=0.6),
         widget.Spacer(),
         widget.Systray(),
-        widget.CurrentLayout(),
         widget.TextBox(''),
         widget.Battery(
             energy_now_file='charge_now',
@@ -200,9 +200,9 @@ w2 = [
             chords_colors={ 'launch': ("#ff0000", "#ffffff") },
             name_transform=lambda name: name.upper(),
         ),
+        widget.CurrentLayoutIcon(scale=0.6),
         widget.Spacer(),
         widget.Systray(),
-        widget.CurrentLayout(),
         widget.TextBox(''),
         widget.Battery(
             energy_now_file='charge_now',
