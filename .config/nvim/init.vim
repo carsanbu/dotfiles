@@ -12,8 +12,6 @@ call plug#begin('~/.config/nvim/plugged')
 " Custom Bundles
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'frankier/neovim-colors-solarized-truecolor-only'
-"Plug 'Valloric/YouCompleteMe'
-Plug 'tomasr/molokai'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'Raimondi/delimitMate'
@@ -21,6 +19,7 @@ Plug 'ternjs/tern_for_vim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'chrisbra/colorizer'
 Plug 'airblade/vim-gitgutter'
+Plug 'tpope/vim-fugitive'
 
 call plug#end()
 
@@ -88,9 +87,6 @@ endif
 
 " Configuración extra
 " Configuración de plugins
-" YouCompleteMe
-let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py'
-
 let g:coc_global_extensions=['coc-tsserver', 'coc-css', 'coc-html', 'coc-json', 'coc-clangd', 'coc-cmake', 'coc-markdownlint', 'coc-python', 'coc-sh', 'coc-rls', 'coc-xml', 'coc-yaml']
 
 let g:netrw_banner = 0
@@ -104,3 +100,7 @@ augroup ProjectDrawer
 		autocmd VimEnter *Vexplore
 augroup END
 
+" air-line
+let g:airline#extensions#tabline#enabled = 1
+let g:airline_powerline_fonts = 1
+let g:airline_theme='isotopo'
