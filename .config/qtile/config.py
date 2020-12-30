@@ -82,7 +82,7 @@ keys = [
     Key([mod, "control"], "r", lazy.restart(), desc="Restart qtile"),
     Key([mod, "control"], "q", lazy.shutdown(), desc="Shutdown qtile"),
     #Key([mod], "r", lazy.spawncmd(), desc="Spawn a command using a prompt widget"),
-    Key([mod], "r", lazy.spawn('qdbus org.kde.krunner /App display')),
+    Key([mod], "r", lazy.spawn('rofi -show run')),
     # Sound
     Key([], "XF86AudioMute", lazy.spawn("amixer -q set Master toggle")),
     Key([], "XF86AudioLowerVolume", lazy.spawn("amixer -c 0 sset Master 1- unmute")),
@@ -144,7 +144,7 @@ layouts = [
 ]
 
 widget_defaults = dict(
-    font='Droid Sans',
+    font='Product Sans Bold',
     fontsize=12,
     padding=3,
     foreground=main_color
@@ -171,23 +171,23 @@ w1 = [
         widget.CurrentLayoutIcon(scale=0.6),
         widget.Spacer(),
         widget.Systray(),
-        widget.BatteryIcon(),
-#        widget.TextBox(''),
-#        widget.Battery(
-#            energy_now_file='charge_now',
-#            energy_full_file='charge_full',
-#            power_now_file='current_now',
-#            charge_char='↑',
-#            discharge_char='↓',
-#        ),
+#        widget.BatteryIcon(),
+        widget.TextBox(''),
+        widget.Battery(
+            energy_now_file='charge_now',
+            energy_full_file='charge_full',
+            power_now_file='current_now',
+            charge_char='↑',
+            discharge_char='↓',
+        ),
+        widget.KeyboardLayout(configured_keyboards=['es','us'], fmt = ' {}'),
         widget.GenPollText(func=bt_status, update_interval=5,
             mouse_callbacks={'Button1': bt_mouse_click},
         ),
         widget.TextBox(text = ' ', padding = 0),
         widget.Volume(padding = 5),
-        widget.Clock(format='%H:%M',
-        ),
-        widget.QuickExit(default_text='⏻'),
+        widget.Clock(format='  %H:%M'),
+        widget.QuickExit(default_text='', padding = 2),
     ]
 w2 = [
         widget.WindowName(),
@@ -205,22 +205,21 @@ w2 = [
         widget.Spacer(),
         widget.Systray(),
         widget.TextBox(''),
-        widget.BatteryIcon(),
-#        widget.Battery(
-#            energy_now_file='charge_now',
-#            energy_full_file='charge_full',
-#            power_now_file='current_now',
-#            charge_char='↑',
-#            discharge_char='↓',
-#        ),
+        widget.Battery(
+            energy_now_file='charge_now',
+            energy_full_file='charge_full',
+            power_now_file='current_now',
+            charge_char='↑',
+            discharge_char='↓',
+        ),
+        widget.KeyboardLayout(configured_keyboards=['es','us'], fmt = ' {}'),
         widget.GenPollText(func=bt_status, update_interval=5,
             mouse_callbacks={'Button1': bt_mouse_click},
         ),
         widget.TextBox(text = ' ', padding = 0),
         widget.Volume(padding = 5),
-        widget.Clock(format='%H:%M',
-        ),
-        widget.QuickExit(default_text='⏻'),
+        widget.Clock(format='  %H:%M'),
+        widget.QuickExit(default_text='', padding = 2),
     ]
 
 screens = [
@@ -246,7 +245,7 @@ mouse = [
 dgroups_key_binder = None
 dgroups_app_rules = []  # type: List
 main = None  # WARNING: this is deprecated and will be removed soon
-follow_mouse_focus = True
+follow_mouse_focus = False
 bring_front_click = False
 cursor_warp = False
 floating_layout = layout.Floating(float_rules=[
