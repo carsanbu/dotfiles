@@ -144,9 +144,9 @@ layouts = [
 ]
 
 widget_defaults = dict(
-    font='Product Sans Bold',
-    fontsize=12,
-    padding=3,
+    font='CodeNewRoman Nerd Font Complete',
+    fontsize=14,
+    padding=7,
     foreground=main_color
 )
 
@@ -172,21 +172,25 @@ w1 = [
         widget.Spacer(),
         widget.Systray(),
 #        widget.BatteryIcon(),
-        widget.TextBox(''),
+#        widget.TextBox(' '),
         widget.Battery(
             energy_now_file='charge_now',
             energy_full_file='charge_full',
             power_now_file='current_now',
-            charge_char='↑',
-            discharge_char='↓',
+            charge_char='',
+            discharge_char='',
+            empty_char = '',
+            full_char = '',
+            unknown_char = '',
+            format='{char} {percent:2.0%} ({hour:d}:{min:02d})'
         ),
-        widget.KeyboardLayout(configured_keyboards=['es','us'], fmt = ' {}'),
+        widget.KeyboardLayout(configured_keyboards=['es','us','us altgr-intl'], fmt = ' {}'),
         widget.GenPollText(func=bt_status, update_interval=5,
             mouse_callbacks={'Button1': bt_mouse_click},
         ),
         widget.TextBox(text = ' ', padding = 0),
         widget.Volume(padding = 5),
-        widget.Clock(format='  %H:%M'),
+        widget.Clock(format=' %H:%M'),
         widget.QuickExit(default_text='', padding = 2),
     ]
 w2 = [
@@ -204,7 +208,7 @@ w2 = [
         widget.CurrentLayoutIcon(scale=0.6),
         widget.Spacer(),
         widget.Systray(),
-        widget.TextBox(''),
+        widget.TextBox('' ),
         widget.Battery(
             energy_now_file='charge_now',
             energy_full_file='charge_full',
@@ -212,7 +216,7 @@ w2 = [
             charge_char='↑',
             discharge_char='↓',
         ),
-        widget.KeyboardLayout(configured_keyboards=['es','us'], fmt = ' {}'),
+        widget.KeyboardLayout(configured_keyboards=['es','us','us altgr-intl'], fmt = '  {}'),
         widget.GenPollText(func=bt_status, update_interval=5,
             mouse_callbacks={'Button1': bt_mouse_click},
         ),
