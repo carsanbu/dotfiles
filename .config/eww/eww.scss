@@ -1,0 +1,26 @@
+*{
+  all: unset;
+}
+window {
+  background-color: rgba(0,0,0,0);
+/*  background-color: #000000; */
+	color: #9cff4d;
+  font-family: CodeNewRoman Nerd Font Complete;
+}
+
+.time {
+	font-size: 120;
+	font-weight: bold;
+}
+.weekday {
+	font-size: 50;
+	padding-right: 8px;
+}
+.date {
+	font-size: 30;
+	padding-right: 8px;
+}
+.weather {
+font-size: 20;
+	padding-right: 8px;
+}

@@ -9,7 +9,9 @@ xss-lock -l -- multilockscreen --lock blur &
 #latte-dock &
 # Notificaciones
 dunst &
-conky -d
+#conky -d
+eww
+eww open main_window
 copyq &
 flameshot &
 kdeconnect-indicator &

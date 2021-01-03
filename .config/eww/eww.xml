@@ -1,0 +1,38 @@
+<eww>
+  <definitions>
+    <def name="main">
+			<box orientation="v" space-evenly="false">
+				<label class="time" halign="end" text="{{time}}"/>
+				<label class="weekday" halign="end" text=" {{weekday}}"/>
+				<label class="date" halign="end" text="{{date}}"/>
+				<label class="weather" halign="end" text="{{weather}}"/>
+      </box>
+    </def>
+  </definitions>
+
+  <variables>
+    <script-var name="time" interval="5s">
+        date +%H:%M
+		</script-var>
+		<script-var name="weekday" interval="1h">
+				date +%A
+		</script-var>
+		<script-var name="date" interval="1h">
+				date "+%d de %B %Y"
+		</script-var>
+		<script-var name='weather' interval="10m">
+			weather
+		</script-var>
+  </variables>
+
+
+  <windows>
+    <window name="main_window" stacking="bg" focusable="false" screen="0">
+			<geometry anchor="top left" x="10px" y="60%" width="25%" height="200px"/>
+			<widget>
+				<main/>
+			</widget>
+    </window>
+  </windows>
+</eww>
+
