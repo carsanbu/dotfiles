@@ -122,3 +122,7 @@ path+=('/home/carlos/.cargo/bin')
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 eval $(thefuck --alias)
+
+export EDITOR="nvim"
+export VISUAL="nvim"
+
