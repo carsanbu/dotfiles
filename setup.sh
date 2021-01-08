@@ -63,12 +63,17 @@ git clone https://github.com/jeffmhubbard/multilockscreen && cd multilockscreen
 sudo install -Dm 755 multilockscreen /usr/local/bin/multilockscreen
 multilockscreen -u ~/Imágenes/wallpapers/1606483234331.jpg
 
+# Widgets
 cd ..
-git clone https://github.com/elkowar/eww
-cd eww
+git clone https://github.com/elkowar/eww && cd eww
 cargo build --release
 cd target/release
 chmod +x ./eww
 cp eww ~/.local/bin/
 cd ../../../
+
+# Ranger
+mkdir ~/.config/ranger/plugins
+git clone https://github.com/alexanderjeurissen/ranger_devicons ~/.config/ranger/plugins/ranger_devicons
+
 
