@@ -60,7 +60,7 @@ set mouse=n         " Activa el ratón
 "set ttymouse=xterm2 " Compatibilidad con la consola
 set list listchars=tab:⇥⇥,eol:↵ " Muestralos tabuladores y saltos de linea.
 set so=14     " Lineas movidas por scroll
-au CursorHoldI * stopinsert " Salir del modo inserción tras 4 segundos.
+"au CursorHoldI * stopinsert " Salir del modo inserción tras 4 segundos.
 
 " Folding (ocultado de bloques anidados)
 set foldenable    " Activa folding
@@ -97,7 +97,7 @@ let g:netrw_winsize = 25
 
 augroup ProjectDrawer
 		autocmd!
-		autocmd VimEnter *Vexplore
+		autocmd VimEnter * :Vexplore
 augroup END
 
 " air-line
