@@ -22,12 +22,12 @@ let g:colors_name="isotopo"
 
 hi Delimiter			guifg=#d0d0d0
 hi CursorLineNr		guifg=#f3e500
-hi Boolean         guifg=#d84dff
+hi Boolean         guifg=#ff3366
 hi Character       guifg=#f3e500
-hi Number          guifg=#d84dff
+hi Number          guifg=#ff3366
 hi String          guifg=#f3e500
 "hi Conditional     guifg=#ff4d4d               gui=bold
-hi Constant        guifg=#d84dff               gui=bold
+hi Constant        guifg=#ff3366               gui=bold
 hi Cursor          guifg=#000000 guibg=#d0d0d0
 hi iCursor         guifg=#000000 guibg=#d0d0d0
 hi Debug           guifg=#d0d0d0               gui=bold
@@ -42,7 +42,7 @@ hi Directory       guifg=#9cff4d               gui=bold
 hi Error           guifg=#ff4d4d guibg=#1E0010
 hi ErrorMsg        guifg=#ff4d4d guibg=#000000 gui=bold
 hi Exception       guifg=#9cff4d               gui=bold
-hi Float           guifg=#d84dff
+hi Float           guifg=#ff3366
 hi FoldColumn      guifg=#4d91ff guibg=#000000
 hi Folded          guifg=#4d91ff guibg=#000000
 hi Function        guifg=#9cff4d	gui=bold
@@ -50,7 +50,7 @@ hi Identifier      guifg=#f3e500
 hi Ignore          guifg=#1d2330 guibg=bg
 hi IncSearch       guifg=#C4BE89 guibg=#000000
 
-hi Keyword         guifg=#d84dff               gui=bold
+hi Keyword         guifg=#ff3366               gui=bold
 hi Label           guifg=#f3e500               gui=none
 hi Macro           guifg=#d0d0d0               gui=italic
 hi SpecialKey      guifg=#1d2330               gui=italic
@@ -58,7 +58,7 @@ hi SpecialKey      guifg=#1d2330               gui=italic
 hi MatchParen      guifg=#000000 guibg=#f3e500 gui=bold
 hi ModeMsg         guifg=#4d91ff
 hi MoreMsg         guifg=#4d91ff
-hi Operator        guifg=#d84dff
+hi Operator        guifg=#ff3366
 
 " complete menu
 hi Pmenu           guifg=#66D9EF guibg=#000000
@@ -69,7 +69,7 @@ hi PmenuThumb      guifg=#66D9EF
 hi PreCondit       guifg=#9cff4d               gui=bold
 hi PreProc         guifg=#9cff4d
 hi Question        guifg=#66D9EF
-hi Repeat          guifg=#d84dff               gui=italic
+hi Repeat          guifg=#ff3366               gui=italic
 hi Search          guifg=#000000 guibg=#f3e500
 " marks
 hi SignColumn      guifg=#9cff4d guibg=#232526
@@ -82,12 +82,12 @@ if has("spell")
     hi SpellLocal  guisp=#70F0F0 gui=undercurl
     hi SpellRare   guisp=#FFFFFF gui=undercurl
 endif
-hi Statement       guifg=#d84dff               gui=italic
+hi Statement       guifg=#ff3366               gui=italic
 hi StatusLine      guifg=#1d2330 guibg=fg
 hi StatusLineNC    guifg=#1d2330 guibg=#080808
 hi StorageClass    guifg=#1d2330               gui=italic
 hi Structure       guifg=#9cff4d
-hi Tag             guifg=#d84dff               gui=italic
+hi Tag             guifg=#ff3366               gui=italic
 hi Title           guifg=#ff4d4d
 hi Todo            guifg=#d0d0d0 guibg=bg      gui=bold
 
