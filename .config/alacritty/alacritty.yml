@@ -8,10 +8,10 @@ colors:
   # Normal colors
   normal:
     black:   '0x000000'
-    red:     '0xff4d4d'
+    red:     '0xff0150'
     green:   '0x9cff4d'
     yellow:  '0xf3e500'  #'0x841091'
-    blue:    '0x4d91ff'
+    blue:    '0x57b2d9'
     magenta: '0xd84dff'
     cyan:    '0x4dffff'
     white:   '0xd0d0d0'
@@ -19,10 +19,10 @@ colors:
   # Bright colors
   bright:
     black:   '0x808080'
-    red:     '0xff4d4d'
+    red:     '0xff3366'
     green:   '0x9cff4d'
     yellow:  '0xf3e500' #  '0x841091'
-    blue:    '0x4d91ff'
+    blue:    '0x57b2d9'
     magenta: '0xd84dff'
     cyan:    '0x4dffff'
     white:   '0xffffff'
