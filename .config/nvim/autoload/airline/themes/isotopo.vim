@@ -1,18 +1,18 @@
 " Normal mode                                    " guifg guibg ctermfg ctermbg
-let s:N1 = [ '#000000' , '#4d91ff' , 250 , 97  ]
+let s:N1 = [ '#000000' , '#57b2d9' , 250 , 97  ]
 let s:N2 = [ '#000000' , '#9cff4d' , 170 , 239 ]
-let s:N3 = [ '#c6c6c6' , '#3a3a3a' , 251 , 237 ]
+let s:N3 = [ '#c6c6c6' , '#000000' , 251 , 237 ]
 
 " Insert mode
 let s:I1 = [ '#000000' , '#9cff4d' , 253 , 35  ]
 let s:I2 = [ '#000000' , '#f3e500' , 170 , 239 ]
-let s:I3 = [ '#c6c6c6' , '#3a3a3a' , 251 , 237 ]
+let s:I3 = [ '#c6c6c6' , '#000000' , 251 , 237 ]
 
 " Visual mode
 let s:V1 = [ '#000000' , '#d84dff' , 52 , 205 ]
 
 " Replace mode
-let s:RE = [ '#c6c6c6' , '#ff4d4d' , 251, 168 ]
+let s:RE = [ '#c6c6c6' , '#ff0150' , 251, 168 ]
 
 let g:airline#themes#isotopo#palette = {}
 
