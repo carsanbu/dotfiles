@@ -5,7 +5,6 @@ picom --experimental-backends -b
 /usr/lib/x86_64-linux-gnu/libexec/org_kde_powerdevil &
 /usr/lib/x86_64-linux-gnu/libexec/polkit-kde-authentication-agent-1 &
 # Lockscreen al suspender
-xss-lock -l -- multilockscreen --lock blur &
 #latte-dock &
 # Notificaciones
 deadd-notification-center &
@@ -16,3 +15,4 @@ eww open main_window
 #copyq &
 #flameshot &
 #kdeconnect-indicator &
+xss-lock -l -- multilockscreen --lock blur &

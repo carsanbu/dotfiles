@@ -31,7 +31,7 @@ from libqtile import bar, layout, widget, hook
 from libqtile.config import Click, Drag, Group, Key, Screen
 from libqtile.lazy import lazy
 from libqtile.utils import guess_terminal
-
+from layouts import layouts, floating_layout, group_names
 
 # key macros
 ALT = 'mod1'
@@ -82,31 +82,12 @@ keys = [
     Key([mod, "control"], "r", lazy.restart(), desc="Restart qtile"),
     Key([mod, "control"], "q", lazy.shutdown(), desc="Shutdown qtile"),
     #Key([mod], "r", lazy.spawncmd(), desc="Spawn a command using a prompt widget"),
-    Key([mod], "r", lazy.spawn('rofi -show run')),
+    Key([mod], "r", lazy.spawn('rofi -combi-modi window,drun,ssh,calc:qalc -show combi -modi combi')),
     # Sound
     Key([], "XF86AudioMute", lazy.spawn("amixer -q set Master toggle")),
     Key([], "XF86AudioLowerVolume", lazy.spawn("amixer -c 0 sset Master 1- unmute")),
     Key([], "XF86AudioRaiseVolume", lazy.spawn("amixer -c 0 sset Master 1+ unmute"))
 ]
-
-
-#groups = [Group(i) for i in "asdfuiop"]
-
-#for i in groups:
-#    keys.extend([
-#        # mod1 + letter of group = switch to group
-#        Key([mod], i.name, lazy.group[i.name].toscreen(),
-#            desc="Switch to group {}".format(i.name)),
-
-group_names = [("一", {'layout': 'monadtall'}),
-               ("二", {'layout': 'monadtall'}),
-               ("三", {'layout': 'monadtall'}),
-               ("四", {'layout': 'monadtall'}),
-               ("五", {'layout': 'monadtall'}),
-               ("六", {'layout': 'monadtall'}),
-               ("七", {'layout': 'monadtall'}),
-               ("八", {'layout': 'monadtall'}),
-               ("十", {'layout': 'monadtall'})]
 
 groups = [Group(name, **kwargs) for name, kwargs in group_names]
 
@@ -114,34 +95,11 @@ for i, (name, kwargs) in enumerate(group_names, 1):
     keys.append(Key([mod], str(i), lazy.group[name].toscreen()))        # Switch to another group
     keys.append(Key([mod, "shift"], str(i), lazy.window.togroup(name))) # Send current window to another group
 
+# Pasar a módulo theme.py
 main_color = '9cff4d'
 yellow = 'f3e500'
 gray = '1D2330'
-# https://www.flickr.com/photos/12449830@N00/419498290
-# https://www.flickr.com/photos/25027666@N02/5389270117
-layout_theme = {'border_width': 2,
-                'margin': 6,
-                'border_focus': main_color,  #'A54242',
-                'border_normal': gray
-                }
-
-layouts = [
-    layout.MonadTall(**layout_theme),
-    layout.Max(**layout_theme),
-    #layout.Floating(**layout_theme),
-    # layout.Stack(num_stacks=2),
-    # Try more layouts by unleashing below layouts.
-    # layout.Bsp(),
-    # layout.Columns(**layout_theme),
-    # layout.Matrix(),
-    # layout.MonadTall(),
-    # layout.MonadWide(),
-    # layout.RatioTile(),
-    # layout.Tile(),
-    # layout.TreeTab(),
-    # layout.VerticalTile(),
-    # layout.Zoomy(),
-]
+#
 
 widget_defaults = dict(
     font='CodeNewRoman Nerd Font Complete',
@@ -154,6 +112,8 @@ def bt_status():
    return subprocess.getoutput('/home/carlos/.local/bin/system-bluetooth-bluetoothctl.sh')
 def bt_mouse_click(qtile):
     subprocess.run(['/home/carlos/.local/bin/system-bluetooth-bluetoothctl.sh', '--toggle'])
+def notification_toggle():
+    subprocess.run(['/home/carlos/.local/bin/notification-center-toggle.sh'])
 
 extension_defaults = widget_defaults.copy()
 w1 = [
@@ -171,8 +131,6 @@ w1 = [
         widget.CurrentLayoutIcon(scale=0.6),
         widget.Spacer(),
         widget.Systray(),
-#        widget.BatteryIcon(),
-#        widget.TextBox(' '),
         widget.Battery(
             energy_now_file='charge_now',
             energy_full_file='charge_full',
@@ -191,6 +149,7 @@ w1 = [
         widget.TextBox(text = ' ', padding = 0),
         widget.Volume(padding = 5),
         widget.Clock(format=' %H:%M'),
+        widget.TextBox(text = '', mouse_callbacks={'Button1': notification_toggle}),
         widget.QuickExit(default_text='', padding = 2),
     ]
 w2 = [
@@ -208,13 +167,16 @@ w2 = [
         widget.CurrentLayoutIcon(scale=0.6),
         widget.Spacer(),
         widget.Systray(),
-        widget.TextBox('' ),
         widget.Battery(
             energy_now_file='charge_now',
             energy_full_file='charge_full',
             power_now_file='current_now',
-            charge_char='↑',
-            discharge_char='↓',
+            charge_char='',
+            discharge_char='',
+            empty_char = '',
+            full_char = '',
+            unknown_char = '',
+            format='{char} {percent:2.0%} ({hour:d}:{min:02d})'
         ),
         widget.KeyboardLayout(configured_keyboards=['es','us','us altgr-intl'], fmt = '  {}'),
         widget.GenPollText(func=bt_status, update_interval=5,
@@ -223,6 +185,7 @@ w2 = [
         widget.TextBox(text = ' ', padding = 0),
         widget.Volume(padding = 5),
         widget.Clock(format='  %H:%M'),
+        widget.TextBox(text = '', mouse_callbacks={'Button1': notification_toggle}),
         widget.QuickExit(default_text='', padding = 2),
     ]
 
@@ -235,7 +198,9 @@ screens = [
 @hook.subscribe.startup_once
 def autostart():
     home = os.path.expanduser('~/.config/qtile/autostart.sh')
-    subprocess.call([home])
+    log = os.path.expanduser('~/.local/share/qtile/autostart.log')
+    with open(log, 'w') as logfile:
+        subprocess.run(home, stdout=logfile)
 
 # Drag floating layouts.
 mouse = [
@@ -252,24 +217,6 @@ main = None  # WARNING: this is deprecated and will be removed soon
 follow_mouse_focus = False
 bring_front_click = False
 cursor_warp = False
-floating_layout = layout.Floating(float_rules=[
-    # Run the utility of `xprop` to see the wm class and name of an X client.
-    {'wmclass': 'confirm'},
-    {'wmclass': 'dialog'},
-    {'wmclass': 'download'},
-    {'wmclass': 'error'},
-    {'wmclass': 'file_progress'},
-    {'wmclass': 'notification'},
-    {'wmclass': 'splash'},
-    {'wmclass': 'toolbar'},
-    {'wmclass': 'confirmreset'},  # gitk
-    {'wmclass': 'makebranch'},  # gitk
-    {'wmclass': 'maketag'},  # gitk
-    {'wname': 'branchdialog'},  # gitk
-    {'wname': 'pinentry'},  # GPG key password entry
-    {'wmclass': 'ssh-askpass'},  # ssh-askpass
-    {'wmclass': 'latte-dock'}
-])
 auto_fullscreen = True
 focus_on_window_activation = "smart"
 
