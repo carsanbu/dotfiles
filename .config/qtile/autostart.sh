@@ -8,10 +8,11 @@ picom --experimental-backends -b
 xss-lock -l -- multilockscreen --lock blur &
 #latte-dock &
 # Notificaciones
-dunst &
+deadd-notification-center &
+#dunst &
 #conky -d
 eww
 eww open main_window
-copyq &
-flameshot &
-kdeconnect-indicator &
+#copyq &
+#flameshot &
+#kdeconnect-indicator &
