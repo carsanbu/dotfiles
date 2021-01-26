@@ -82,7 +82,8 @@ keys = [
     Key([mod, "control"], "r", lazy.restart(), desc="Restart qtile"),
     Key([mod, "control"], "q", lazy.shutdown(), desc="Shutdown qtile"),
     #Key([mod], "r", lazy.spawncmd(), desc="Spawn a command using a prompt widget"),
-    Key([mod], "r", lazy.spawn('rofi -combi-modi window,drun,ssh,calc:qalc -show combi -modi combi')),
+    #Key([mod], "r", lazy.spawn('rofi -combi-modi window,drun,ssh,calc:qalc -show combi -modi combi')),
+    Key([mod], "r", lazy.spawn(os.path.expanduser('~/.local/bin/launcher.sh'))),
     # Sound
     Key([], "XF86AudioMute", lazy.spawn("amixer -q set Master toggle")),
     Key([], "XF86AudioLowerVolume", lazy.spawn("amixer -c 0 sset Master 1- unmute")),
