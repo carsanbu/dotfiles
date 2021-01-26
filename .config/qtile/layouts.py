@@ -1,4 +1,5 @@
 from libqtile import layout
+from theme import colors
 
 group_names = [("一", {'layout': 'monadtall'}),
                ("二", {'layout': 'monadtall'}),
@@ -9,15 +10,11 @@ group_names = [("一", {'layout': 'monadtall'}),
                ("七", {'layout': 'monadtall'}),
                ("八", {'layout': 'monadtall'}),
                ("十", {'layout': 'monadtall'})]
-main_color = '9cff4d'
-yellow = 'f3e500'
-gray = '1D2330'
-# https://www.flickr.com/photos/12449830@N00/419498290
-# https://www.flickr.com/photos/25027666@N02/5389270117
+
 layout_theme = {'border_width': 2,
                 'margin': 6,
-                'border_focus': main_color,  #'A54242',
-                'border_normal': gray
+                'border_focus': colors['main'],
+                'border_normal': colors['gray']
                 }
 
 layouts = [
