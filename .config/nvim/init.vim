@@ -85,6 +85,11 @@ if has("unix")
   let g:python_host_prog='/usr/bin/python'
 endif
 
+vmap <C-c> "+yi
+vmap <C-x> "+c
+vmap <C-v> c<ESC>"+p
+imap <C-v> <C-r><C-o>+
+
 " Configuración extra
 " Configuración de plugins
 let g:coc_global_extensions=['coc-tsserver', 'coc-css', 'coc-html', 'coc-json', 'coc-clangd', 'coc-cmake', 'coc-markdownlint', 'coc-python', 'coc-sh', 'coc-rls', 'coc-xml', 'coc-yaml']
