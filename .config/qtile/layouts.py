@@ -13,7 +13,7 @@ group_names = [("一", {'layout': 'monadtall'}),
 
 layout_theme = {'border_width': 2,
                 'margin': 6,
-                'border_focus': colors['main'],
+                'border_focus': colors['green'],
                 'border_normal': colors['gray']
                 }
 

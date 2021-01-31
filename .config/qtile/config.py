@@ -32,6 +32,7 @@ from libqtile.config import Click, Drag, Group, Key, Screen
 from libqtile.lazy import lazy
 from libqtile.utils import guess_terminal
 from layouts import layouts, floating_layout, group_names
+from theme import colors
 
 # key macros
 ALT = 'mod1'
@@ -106,7 +107,7 @@ widget_defaults = dict(
     font='CodeNewRoman Nerd Font Complete',
     fontsize=14,
     padding=7,
-    foreground=main_color
+    foreground=colors['main'],
 )
 
 def bt_status():
@@ -121,7 +122,7 @@ w1 = [
         widget.WindowName(),
         widget.GroupBox(
             active=main_color,
-            this_current_screen_border=yellow,
+            this_current_screen_border=main_color,
             this_screen_border=main_color,
             other_screen_border=gray,
             highlight_method='line'),
@@ -132,6 +133,7 @@ w1 = [
         widget.CurrentLayoutIcon(scale=0.6),
         widget.Spacer(),
         widget.Systray(),
+        widget.Wlan(interface='wlp3s0', format='{essid} {percent:2.0%}'),
         widget.Battery(
             energy_now_file='charge_now',
             energy_full_file='charge_full',
@@ -143,7 +145,7 @@ w1 = [
             unknown_char = '',
             format='{char} {percent:2.0%} ({hour:d}:{min:02d})'
         ),
-        widget.KeyboardLayout(configured_keyboards=['es','us','us altgr-intl'], fmt = ' {}'),
+        #widget.KeyboardLayout(configured_keyboards=['es','us','us altgr-intl'], fmt = ' {}'),
         widget.GenPollText(func=bt_status, update_interval=5,
             mouse_callbacks={'Button1': bt_mouse_click},
         ),
@@ -157,7 +159,7 @@ w2 = [
         widget.WindowName(),
         widget.GroupBox(
             active=main_color,
-            this_current_screen_border=yellow,
+            this_current_screen_border=main_color,
             this_screen_border=main_color,
             other_screen_border=gray,
             highlight_method='line'),
@@ -168,6 +170,7 @@ w2 = [
         widget.CurrentLayoutIcon(scale=0.6),
         widget.Spacer(),
         widget.Systray(),
+        widget.Wlan(interface='wlp3s0', format='{essid} {percent:2.0%}'),
         widget.Battery(
             energy_now_file='charge_now',
             energy_full_file='charge_full',
@@ -191,8 +194,8 @@ w2 = [
     ]
 
 screens = [
-    Screen(top=bar.Bar(w1, 28, background='#000000', opacity=1)),
-    Screen(top=bar.Bar(w2, 28, background='#000000', opacity=1))
+    Screen(top=bar.Bar(w1, 28, background='#000000', opacity=0.8)),
+    Screen(top=bar.Bar(w2, 28, background='#000000', opacity=0.8))
 ]
 
 
