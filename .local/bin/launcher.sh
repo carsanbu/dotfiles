@@ -14,10 +14,7 @@
 
 theme="blurry"
 dir="$HOME/.config/rofi/launchers/misc"
-
-# comment these lines to disable random style
-#themes=($(ls -p --hide="launcher.sh" $dir))
-# "${themes[$(( $RANDOM % 16 ))]}"
+dir_bin="$HOME/.local/bin"
 
 #rofi -no-lazy-grab -show drun -modi drun -theme $dir/"$theme"
-rofi -no-lazy-grab -combi-modi drun,ssh -show combi -modi combi -theme $dir/"$theme"
+rofi -no-lazy-grab -combi-modi power:$dir_bin/rofi-power-menu,drun,ssh -show combi -modi combi -theme $dir/"$theme"
