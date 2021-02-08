@@ -123,6 +123,6 @@ path+=('/home/carlos/.cargo/bin')
 
 eval $(thefuck --alias)
 
-export EDITOR="nvim"
-export VISUAL="nvim"
+export EDITOR="nvr --remote"
+export VISUAL="nvr --remote"
 
