@@ -14,19 +14,19 @@ let s:V1 = [ '#000000' , '#d84dff' , 52 , 205 ]
 " Replace mode
 let s:RE = [ '#c6c6c6' , '#ff0150' , 251, 168 ]
 
-let g:airline#themes#isotopo#palette = {}
+let g:airline#themes#tritium#palette = {}
 
-let g:airline#themes#isotopo#palette.normal = airline#themes#generate_color_map(s:N1, s:N2, s:N3)
+let g:airline#themes#tritium#palette.normal = airline#themes#generate_color_map(s:N1, s:N2, s:N3)
 
-let g:airline#themes#isotopo#palette.insert = airline#themes#generate_color_map(s:I1, s:I2, s:I3)
-let g:airline#themes#isotopo#palette.insert_replace = {
+let g:airline#themes#tritium#palette.insert = airline#themes#generate_color_map(s:I1, s:I2, s:I3)
+let g:airline#themes#tritium#palette.insert_replace = {
             \ 'airline_a': [ s:RE[0]   , s:I1[1]   , s:RE[1]   , s:I1[3]   , ''     ] }
 
-let g:airline#themes#isotopo#palette.visual = {
+let g:airline#themes#tritium#palette.visual = {
             \ 'airline_a': [ s:V1[0]   , s:V1[1]   , s:V1[2]   , s:V1[3]   , ''     ] }
 
-let g:airline#themes#isotopo#palette.replace = copy(g:airline#themes#isotopo#palette.normal)
-let g:airline#themes#isotopo#palette.replace.airline_a = [ s:RE[0] , s:RE[1] , s:RE[2] , s:RE[3] , '' ]
+let g:airline#themes#tritium#palette.replace = copy(g:airline#themes#tritium#palette.normal)
+let g:airline#themes#tritium#palette.replace.airline_a = [ s:RE[0] , s:RE[1] , s:RE[2] , s:RE[3] , '' ]
 
 let s:IA = [ s:N1[1] , s:N3[1] , s:N1[3] , s:N3[3] , '' ]
-let g:airline#themes#isotopo#palette.inactive = airline#themes#generate_color_map(s:IA, s:IA, s:IA)
+let g:airline#themes#tritium#palette.inactive = airline#themes#generate_color_map(s:IA, s:IA, s:IA)

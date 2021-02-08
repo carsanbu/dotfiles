@@ -18,7 +18,7 @@ if version > 580
         syntax reset
     endif
 endif
-let g:colors_name="isotopo"
+let g:colors_name="tritium"
 
 hi Delimiter			guifg=#d0d0d0
 hi CursorLineNr		guifg=#f3e500

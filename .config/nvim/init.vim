@@ -32,7 +32,7 @@ syntax on     " Activa coloreado de sintaxis.
 set background=dark 
 "set background=light
 
-colorscheme isotopo " Esquema de color
+colorscheme tritium " Esquema de color
 
 " Configuración de colores
 if has('nvim')
@@ -108,4 +108,5 @@ let g:netrw_winsize = 25
 " air-line
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_powerline_fonts = 1
-let g:airline_theme='isotopo'
+let g:airline_theme='tritium'
+
