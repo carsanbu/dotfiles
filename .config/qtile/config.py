@@ -117,6 +117,9 @@ def bt_mouse_click(qtile):
 def notification_toggle():
     subprocess.run(['/home/carlos/.local/bin/notification-center-toggle.sh'])
 
+def open_powertop():
+    subprocess.run('alacritty -e sudo powertop &', shell=True)
+
 extension_defaults = widget_defaults.copy()
 w1 = [
         widget.WindowName(),
@@ -143,7 +146,8 @@ w1 = [
             empty_char = '',
             full_char = '',
             unknown_char = '',
-            format='{char} {percent:2.0%} ({hour:d}:{min:02d})'
+            format='{char} {percent:2.0%} ({hour:d}:{min:02d})',
+            mouse_callbacks={'Button1': open_powertop}
         ),
         #widget.KeyboardLayout(configured_keyboards=['es','us','us altgr-intl'], fmt = ' {}'),
         widget.GenPollText(func=bt_status, update_interval=5,
@@ -180,7 +184,8 @@ w2 = [
             empty_char = '',
             full_char = '',
             unknown_char = '',
-            format='{char} {percent:2.0%} ({hour:d}:{min:02d})'
+            format='{char} {percent:2.0%} ({hour:d}:{min:02d})',
+            mouse_callbacks={'Button1': open_powertop}
         ),
         widget.KeyboardLayout(configured_keyboards=['es','us','us altgr-intl'], fmt = '  {}'),
         widget.GenPollText(func=bt_status, update_interval=5,
