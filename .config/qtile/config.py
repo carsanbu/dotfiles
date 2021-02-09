@@ -33,6 +33,7 @@ from libqtile.lazy import lazy
 from libqtile.utils import guess_terminal
 from layouts import layouts, floating_layout, group_names
 from theme import colors
+from widget.battery import Battery
 
 # key macros
 ALT = 'mod1'
@@ -117,9 +118,6 @@ def bt_mouse_click(qtile):
 def notification_toggle():
     subprocess.run(['/home/carlos/.local/bin/notification-center-toggle.sh'])
 
-def open_powertop():
-    subprocess.run('alacritty -e sudo powertop &', shell=True)
-
 extension_defaults = widget_defaults.copy()
 w1 = [
         widget.WindowName(),
@@ -137,18 +135,7 @@ w1 = [
         widget.Spacer(),
         widget.Systray(),
         widget.Wlan(interface='wlp3s0', format='{essid} {percent:2.0%}'),
-        widget.Battery(
-            energy_now_file='charge_now',
-            energy_full_file='charge_full',
-            power_now_file='current_now',
-            charge_char='',
-            discharge_char='',
-            empty_char = '',
-            full_char = '',
-            unknown_char = '',
-            format='{char} {percent:2.0%} ({hour:d}:{min:02d})',
-            mouse_callbacks={'Button1': open_powertop}
-        ),
+        Battery(colors),
         #widget.KeyboardLayout(configured_keyboards=['es','us','us altgr-intl'], fmt = ' {}'),
         widget.GenPollText(func=bt_status, update_interval=5,
             mouse_callbacks={'Button1': bt_mouse_click},
@@ -175,18 +162,7 @@ w2 = [
         widget.Spacer(),
         widget.Systray(),
         widget.Wlan(interface='wlp3s0', format='{essid} {percent:2.0%}'),
-        widget.Battery(
-            energy_now_file='charge_now',
-            energy_full_file='charge_full',
-            power_now_file='current_now',
-            charge_char='',
-            discharge_char='',
-            empty_char = '',
-            full_char = '',
-            unknown_char = '',
-            format='{char} {percent:2.0%} ({hour:d}:{min:02d})',
-            mouse_callbacks={'Button1': open_powertop}
-        ),
+        Battery(colors),
         widget.KeyboardLayout(configured_keyboards=['es','us','us altgr-intl'], fmt = '  {}'),
         widget.GenPollText(func=bt_status, update_interval=5,
             mouse_callbacks={'Button1': bt_mouse_click},
