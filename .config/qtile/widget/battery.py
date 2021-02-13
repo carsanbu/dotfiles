@@ -1,7 +1,6 @@
 import subprocess
 from libqtile import widget
 
-
 class Battery(widget.Battery):
     def __init__(self, colors):
         widget.Battery.__init__(self,
@@ -13,16 +12,18 @@ class Battery(widget.Battery):
             empty_char = '',
             full_char = '',
             unknown_char = '',
-            format='{char} {percent:2.0%} ({hour:d}:{min:02d})',
+            format='{char}',
             mouse_callbacks={'Button1': self.open_powertop}
             )
         self.colors = colors
     def mouse_enter(self, x, y):
         self.foreground = self.colors['green']
-        self.draw()
+        setattr(self, 'format', '{char} {percent:2.0%} ({hour:d}:{min:02d})')
+        self.update(self.poll())
     def mouse_leave(self, x, y):
         self.foreground = self.colors['main']
-        self.draw()
+        setattr(self,'format','{char}')
+        self.update(self.poll())
     def open_powertop(self):
         subprocess.run('alacritty -e sudo powertop &', shell=True)
 

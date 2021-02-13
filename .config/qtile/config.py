@@ -83,8 +83,6 @@ keys = [
 
     Key([mod, "control"], "r", lazy.restart(), desc="Restart qtile"),
     Key([mod, "control"], "q", lazy.shutdown(), desc="Shutdown qtile"),
-    #Key([mod], "r", lazy.spawncmd(), desc="Spawn a command using a prompt widget"),
-    #Key([mod], "r", lazy.spawn('rofi -combi-modi window,drun,ssh,calc:qalc -show combi -modi combi')),
     Key([mod], "r", lazy.spawn(os.path.expanduser('~/.local/bin/launcher.sh'))),
     # Sound
     Key([], "XF86AudioMute", lazy.spawn("amixer -q set Master toggle")),
@@ -107,7 +105,7 @@ gray = '1D2330'
 widget_defaults = dict(
     font='CodeNewRoman Nerd Font Complete',
     fontsize=14,
-    padding=7,
+    padding=8,
     foreground=colors['main'],
 )
 
@@ -134,7 +132,7 @@ w1 = [
         widget.CurrentLayoutIcon(scale=0.6),
         widget.Spacer(),
         widget.Systray(),
-        widget.Wlan(interface='wlp3s0', format='{essid} {percent:2.0%}'),
+        widget.Wlan(interface='wlp3s0', format=' {essid} {percent:2.0%}'),
         Battery(colors),
         #widget.KeyboardLayout(configured_keyboards=['es','us','us altgr-intl'], fmt = ' {}'),
         widget.GenPollText(func=bt_status, update_interval=5,
@@ -142,9 +140,8 @@ w1 = [
         ),
         widget.TextBox(text = ' ', padding = 0),
         widget.Volume(padding = 5),
-        widget.Clock(format=' %H:%M'),
+        widget.Clock(format=' %H:%M'),
         widget.TextBox(text = '', mouse_callbacks={'Button1': notification_toggle}),
-        widget.QuickExit(default_text='', padding = 2),
     ]
 w2 = [
         widget.WindowName(),
@@ -161,7 +158,7 @@ w2 = [
         widget.CurrentLayoutIcon(scale=0.6),
         widget.Spacer(),
         widget.Systray(),
-        widget.Wlan(interface='wlp3s0', format='{essid} {percent:2.0%}'),
+        widget.Wlan(interface='wlp3s0', format=' {essid} {percent:2.0%}'),
         Battery(colors),
         widget.KeyboardLayout(configured_keyboards=['es','us','us altgr-intl'], fmt = '  {}'),
         widget.GenPollText(func=bt_status, update_interval=5,
@@ -169,9 +166,8 @@ w2 = [
         ),
         widget.TextBox(text = ' ', padding = 0),
         widget.Volume(padding = 5),
-        widget.Clock(format='  %H:%M'),
+        widget.Clock(format='  %H:%M'),
         widget.TextBox(text = '', mouse_callbacks={'Button1': notification_toggle}),
-        widget.QuickExit(default_text='', padding = 2),
     ]
 
 screens = [
@@ -199,7 +195,7 @@ mouse = [
 dgroups_key_binder = None
 dgroups_app_rules = []  # type: List
 main = None  # WARNING: this is deprecated and will be removed soon
-follow_mouse_focus = False
+follow_mouse_focus = True
 bring_front_click = False
 cursor_warp = False
 auto_fullscreen = True
