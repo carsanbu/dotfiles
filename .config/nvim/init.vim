@@ -29,8 +29,7 @@ filetype plugin indent on
 syntax on     " Activa coloreado de sintaxis.
 
 " Esquema de color. Elegir uno
-set background=dark 
-"set background=light
+set background=dark
 
 colorscheme tritium " Esquema de color
 
@@ -109,4 +108,21 @@ let g:netrw_winsize = 25
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_powerline_fonts = 1
 let g:airline_theme='tritium'
-
+let g:airline_mode_map = {
+      \ '__'     : '-',
+      \ 'c'      : '',
+      \ 'i'      : '',
+      \ 'ic'     : '',
+      \ 'ix'     : '',
+      \ 'n'      : '',
+      \ 'multi'  : 'M',
+      \ 'ni'     : 'N',
+      \ 'no'     : 'N',
+      \ 'R'      : 'R',
+      \ 'Rv'     : 'R',
+      \ 's'      : 'S',
+      \ 'S'     : 'S',
+      \ 't'      : 'T',
+      \ 'v'      : '',
+      \ 'V'      : '',
+      \ }
