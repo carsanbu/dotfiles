@@ -28,5 +28,29 @@ let g:airline#themes#tritium#palette.visual = {
 let g:airline#themes#tritium#palette.replace = copy(g:airline#themes#tritium#palette.normal)
 let g:airline#themes#tritium#palette.replace.airline_a = [ s:RE[0] , s:RE[1] , s:RE[2] , s:RE[3] , '' ]
 
-let s:IA = [ s:N1[1] , s:N3[1] , s:N1[3] , s:N3[3] , '' ]
+let s:IA = [ s:N1[1] , s:N3[1] , s:N1[3] , s:N3[3] , '']
 let g:airline#themes#tritium#palette.inactive = airline#themes#generate_color_map(s:IA, s:IA, s:IA)
+
+" Warnings
+let g:airline#themes#tritium#palette.normal.airline_warning = s:I2
+
+let g:airline#themes#tritium#palette.insert.airline_warning =
+      \ g:airline#themes#tritium#palette.normal.airline_warning
+"
+let g:airline#themes#tritium#palette.visual.airline_warning =
+      \ g:airline#themes#tritium#palette.normal.airline_warning
+
+let g:airline#themes#tritium#palette.replace.airline_warning =
+      \ g:airline#themes#tritium#palette.normal.airline_warning
+
+" Errors
+let g:airline#themes#tritium#palette.normal.airline_error = s:RE
+
+let g:airline#themes#tritium#palette.insert.airline_error =
+      \ g:airline#themes#tritium#palette.normal.airline_error
+
+let g:airline#themes#tritium#palette.visual.airline_error =
+      \ g:airline#themes#tritium#palette.normal.airline_error
+
+let g:airline#themes#tritium#palette.replace.airline_error =
+      \ g:airline#themes#tritium#palette.normal.airline_error
