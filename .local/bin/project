@@ -1,0 +1,6 @@
+#!/bin/bash
+$TERMCMD -e ./rnvim &
+sleep 1
+$TERMCMD &
+sleep 1
+$TERMCMD -e ranger &
