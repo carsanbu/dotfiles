@@ -125,4 +125,4 @@ eval $(thefuck --alias)
 
 export EDITOR="nvr --remote"
 export VISUAL="nvr --remote"
-
+export TERMCMD="alacritty"
