@@ -20,6 +20,7 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'chrisbra/colorizer'
 Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-fugitive'
+Plug 'jceb/vim-orgmode'
 
 call plug#end()
 
