@@ -34,6 +34,8 @@ from libqtile.utils import guess_terminal
 from layouts import layouts, floating_layout, group_names
 from theme import colors
 from widget.battery import Battery
+from widget.wlan import Wlan
+from widget.keyboard_layout import KeyboardLayout
 
 # key macros
 ALT = 'mod1'
@@ -68,7 +70,7 @@ keys = [
     # Swap panes of split stack
     Key([mod, "shift"], "space", lazy.layout.rotate(),
         desc="Swap panes of split stack"),
-
+    Key([mod], 'f', lazy.window.toggle_fullscreen(), desc='Toggle fullscreen mode'),
     # Toggle between split and unsplit sides of stack.
     # Split = all windows displayed
     # Unsplit = 1 window displayed, like Max layout, but still with
@@ -132,7 +134,7 @@ w1 = [
         widget.CurrentLayoutIcon(scale=0.6),
         widget.Spacer(),
         widget.Systray(),
-        widget.Wlan(interface='wlp3s0', format=' {essid} {percent:2.0%}'),
+        Wlan(colors),
         Battery(colors),
         #widget.KeyboardLayout(configured_keyboards=['es','us','us altgr-intl'], fmt = ' {}'),
         widget.GenPollText(func=bt_status, update_interval=5,
@@ -158,9 +160,9 @@ w2 = [
         widget.CurrentLayoutIcon(scale=0.6),
         widget.Spacer(),
         widget.Systray(),
-        widget.Wlan(interface='wlp3s0', format=' {essid} {percent:2.0%}'),
+        Wlan(colors),
         Battery(colors),
-        widget.KeyboardLayout(configured_keyboards=['es','us','us altgr-intl'], fmt = '  {}'),
+        KeyboardLayout(colors),
         widget.GenPollText(func=bt_status, update_interval=5,
             mouse_callbacks={'Button1': bt_mouse_click},
         ),
