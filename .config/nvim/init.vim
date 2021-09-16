@@ -21,6 +21,9 @@ Plug 'chrisbra/colorizer'
 Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-fugitive'
 Plug 'jceb/vim-orgmode'
+Plug 'SirVer/ultisnips', {'for': ['sh', 'python', 'markdown', 'c']}
+Plug 'honza/vim-snippets', {'for': ['sh', 'python', 'markdown', 'c']}
+Plug 'ervandew/supertab'
 
 call plug#end()
 
@@ -100,10 +103,16 @@ let g:netrw_browse_split = 4
 let g:netrw_altv = 1
 let g:netrw_winsize = 25
 
-"augroup ProjectDrawer
-"		autocmd!
-"		autocmd VimEnter * :Vexplore
-"augroup END
+let g:SuperTabDefaultCompletionType    = '<C-n>'
+let g:SuperTabCrMapping                = 0
+let g:UltiSnipsExpandTrigger           = '<tab>'
+let g:UltiSnipsJumpForwardTrigger      = '<tab>'
+let g:UltiSnipsJumpBackwardTrigger     = '<s-tab>'
+let g:ycm_key_list_select_completion   = ['<C-j>', '<C-n>', '<Down>']
+let g:ycm_key_list_previous_completion = ['<C-k>', '<C-p>', '<Up>']
+
+let g:UltiSnipsEditSplit="vertical"
+let g:UltiSnipsListSnippets="<c-t>"
 
 " air-line
 let g:airline#extensions#tabline#enabled = 1
