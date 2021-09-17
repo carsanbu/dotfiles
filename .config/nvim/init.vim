@@ -24,6 +24,7 @@ Plug 'jceb/vim-orgmode'
 Plug 'SirVer/ultisnips', {'for': ['sh', 'python', 'markdown', 'c']}
 Plug 'honza/vim-snippets', {'for': ['sh', 'python', 'markdown', 'c']}
 Plug 'ervandew/supertab'
+Plug 'Valloric/YouCompleteMe'
 
 call plug#end()
 
