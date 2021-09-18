@@ -136,7 +136,7 @@ w1 = [
         widget.Systray(),
         Wlan(colors),
         Battery(colors),
-        #widget.KeyboardLayout(configured_keyboards=['es','us','us altgr-intl'], fmt = ' {}'),
+        widget.KeyboardLayout(configured_keyboards=['es','us','us altgr-intl'], fmt = ' {}'),
         widget.GenPollText(func=bt_status, update_interval=5,
             mouse_callbacks={'Button1': bt_mouse_click},
         ),
