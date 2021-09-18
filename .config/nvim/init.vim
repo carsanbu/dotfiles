@@ -24,6 +24,11 @@ Plug 'jceb/vim-orgmode'
 Plug 'SirVer/ultisnips', {'for': ['sh', 'python', 'markdown', 'c']}
 Plug 'honza/vim-snippets', {'for': ['sh', 'python', 'markdown', 'c']}
 Plug 'ervandew/supertab'
+Plug 'mhinz/vim-startify'
+Plug 'tpope/vim-surround'
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
+Plug 'Yggdroot/indentLine'
 
 call plug#end()
 
@@ -61,7 +66,7 @@ set lazyredraw      " Redibuja pantalla solo cuando es estríctamente
 set showmatch       " Señala [{()}]
 set mouse=n         " Activa el ratón
 "set ttymouse=xterm2 " Compatibilidad con la consola
-set list listchars=tab:⇥⇥,eol:↵ " Muestralos tabuladores y saltos de linea.
+set list listchars=eol:↵,tab:⇥\ ,trail:- " Muestralos tabuladores y saltos de linea.
 set so=14     " Lineas movidas por scroll
 "au CursorHoldI * stopinsert " Salir del modo inserción tras 4 segundos.
 
