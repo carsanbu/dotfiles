@@ -63,6 +63,7 @@ set number          " Muestra número de lineas.
 set cursorline      " Señala la linea actual.
 set wildmenu        " Autocompletado para la barra de comandos.
 set lazyredraw      " Redibuja pantalla solo cuando es estríctamente
+set colorcolumn=80
 " necesario.
 set showmatch       " Señala [{()}]
 set mouse=n         " Activa el ratón
