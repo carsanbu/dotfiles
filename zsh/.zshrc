@@ -126,3 +126,7 @@ eval $(thefuck --alias)
 export EDITOR="nvr --remote"
 export VISUAL="nvr --remote"
 export TERMCMD="alacritty"
+
+export FZF_DEFAULT_COMMAND='ag --hidden --ignore .git -g ""'
+export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+
