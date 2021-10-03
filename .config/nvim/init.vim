@@ -72,6 +72,13 @@ set list listchars=eol:↵,tab:⇥\ ,trail:- " Muestralos tabuladores y saltos d
 set so=14     " Lineas movidas por scroll
 "au CursorHoldI * stopinsert " Salir del modo inserción tras 4 segundos.
 
+" Leader
+let mapleader = ","
+
+" Edita vim config
+:nnoremap <leader>ev :vsplit $MYVIMRC<cr>
+:nnoremap <leader>sv :source $MYVIMRC<cr>
+
 " Folding (ocultado de bloques anidados)
 set foldenable    " Activa folding
 set foldlevelstart=10 " Dobla a partir de 10.
