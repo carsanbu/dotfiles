@@ -28,7 +28,10 @@ sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.
        https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
 
 sudo pip3 install thefuck
+sudo pip install git+https://github.com/will8211/unimatrix.git
 pip3 install qtile neovim-remote ranger-fm ueberzug
+
+sudo cp .config/alacrity/shell.sh /usr/local/bin
 
 echo '[Desktop Entry]
 Name=Qtile

@@ -44,3 +44,5 @@ font:
   italic:
     family: CodeNewRoman Nerd Font
 
+shell:
+  program: shell.sh
