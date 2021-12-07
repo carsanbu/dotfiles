@@ -86,16 +86,6 @@ set foldnestmax=10  " Máximo de 10
 set foldmethod=indent " Basado en identado
 nnoremap <space> za
 
-" Movimiento
-" Comienzo de la linea
-nnoremap B ^
-" Final de la linea
-nnoremap E $
-
-" Desactivamos $/^
-nnoremap $ <nop>
-nnoremap ^ <nop>
-
 " Path de Python
 if has("unix")
   let s:uname = system("uname")
