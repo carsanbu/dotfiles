@@ -14,7 +14,6 @@ Plug 'ctrlpvim/ctrlp.vim'
 Plug 'frankier/neovim-colors-solarized-truecolor-only'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-"Plug 'Raimondi/delimitMate'
 Plug 'ternjs/tern_for_vim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'chrisbra/colorizer'
@@ -29,7 +28,13 @@ Plug 'tpope/vim-surround'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'Yggdroot/indentLine'
-Plug 'Valloric/YouCompleteMe'
+Plug 'pangloss/vim-javascript'
+Plug 'leafgarland/typescript-vim'
+Plug 'peitalin/vim-jsx-typescript'
+Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
+Plug 'jparise/vim-graphql'
+Plug 'vimwiki/vimwiki'
+Plug 'michal-h21/vim-zettel'
 
 call plug#end()
 
@@ -70,7 +75,6 @@ set mouse=n         " Activa el ratón
 "set ttymouse=xterm2 " Compatibilidad con la consola
 set list listchars=eol:↵,tab:⇥\ ,trail:- " Muestralos tabuladores y saltos de linea.
 set so=14     " Lineas movidas por scroll
-"au CursorHoldI * stopinsert " Salir del modo inserción tras 4 segundos.
 
 " Leader
 let mapleader = ","
@@ -117,6 +121,15 @@ let g:ycm_key_list_previous_completion = ['<C-k>', '<C-p>', '<Up>']
 
 let g:UltiSnipsEditSplit="vertical"
 let g:UltiSnipsListSnippets="<c-t>"
+
+" vimwiki
+let wiki_1 = {}
+let wiki_1.path = '~/gestion/conocimiento/'
+let wiki_1.syntax = 'markdown'
+let wiki_1.ext = '.md'
+
+let g:vimwiki_list = [wiki_1]
+let g:vimwiki_ext2syntax = {'.md': 'markdown'}
 
 " air-line
 let g:airline#extensions#tabline#enabled = 1
