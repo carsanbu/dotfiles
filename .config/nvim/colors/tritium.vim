@@ -93,7 +93,7 @@ hi Todo            guifg=#d0d0d0 guibg=bg      gui=bold
 
 hi Typedef         guifg=#9cff4d
 hi Type            guifg=#9cff4d               gui=none
-hi Underlined      guifg=#1d2330               gui=underline
+hi Underlined      guifg=#66d9ef               gui=underline
 
 hi VertSplit       guifg=#1d2330 guibg=#080808 gui=bold
 hi VisualNOS                     guibg=#403D3D
