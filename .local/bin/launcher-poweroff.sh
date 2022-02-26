@@ -17,4 +17,4 @@ dir="$HOME/.config/rofi/launchers/misc"
 dir_bin="$HOME/.local/bin"
 
 #rofi -no-lazy-grab -show drun -modi drun -theme $dir/"$theme"
-rofi -no-lazy-grab -combi-modi drun,ssh -show combi -modi combi -theme $dir/"$theme"
+rofi -no-lazy-grab -combi-modi power:$dir_bin/rofi-power-menu -show combi -modi combi -theme $dir/"$theme"

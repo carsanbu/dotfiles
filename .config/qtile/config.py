@@ -54,7 +54,6 @@ if __name__ in ["config", "__main__"]:
     SHIFT = 'shift'
     RETURN = 'Return'
     SPACE = 'space'
-    MODKEY = ALT
 
     mod = WIN
     terminal = "alacritty" # guess_terminal()
@@ -73,7 +72,7 @@ if __name__ in ["config", "__main__"]:
             desc="Move window up in current stack "),
 
         # Switch window focus to other pane(s) of stack
-        Key([mod], TAB, lazy.layout.next(),
+        Key([ALT], TAB, lazy.layout.next(),
             desc="Switch window focus to other pane(s) of stack"),
 
         # Swap panes of split stack
@@ -89,7 +88,7 @@ if __name__ in ["config", "__main__"]:
         Key([mod], "Return", lazy.spawn(terminal), desc="Launch terminal"),
 
         # Toggle between different layouts as defined below
-        Key([mod], SPACE, lazy.next_layout(), desc="Toggle between layouts"),
+        Key([mod], TAB, lazy.next_layout(), desc="Toggle between layouts"),
         Key([mod], "w", lazy.window.kill(), desc="Kill focused window"),
 
         Key([mod, "control"], "r", lazy.restart(), desc="Restart qtile"),
@@ -98,7 +97,12 @@ if __name__ in ["config", "__main__"]:
         # Sound
         Key([], "XF86AudioMute", lazy.spawn("amixer -q set Master toggle")),
         Key([], "XF86AudioLowerVolume", lazy.spawn("amixer -c 0 sset Master 1- unmute")),
-        Key([], "XF86AudioRaiseVolume", lazy.spawn("amixer -c 0 sset Master 1+ unmute"))
+        Key([], "XF86AudioRaiseVolume", lazy.spawn("amixer -c 0 sset Master 1+ unmute")),
+        # Power off
+        Key([], 'XF86PowerOff', lazy.spawn(os.path.expanduser(
+            '~/.local/bin/launcher-poweroff.sh'))),
+        Key([mod], 'q', lazy.spawn(os.path.expanduser(
+            '~/.local/bin/launcher-poweroff.sh')))
     ]
 
     groups = [Group(name, **kwargs) for name, kwargs in group_names]
@@ -138,7 +142,7 @@ if __name__ in ["config", "__main__"]:
             widget.Systray(),
             Wlan(colors),
             Battery(colors),
-            widget.KeyboardLayout(configured_keyboards=['es','us','us altgr-intl'], fmt = ' {}'),
+            widget.KeyboardLayout(configured_keyboards=['us altgr-intl','es','us'], fmt = ' {}'),
             widget.GenPollText(func=bt_status, update_interval=5,
                 mouse_callbacks={'Button1': bt_mouse_click},
             ),

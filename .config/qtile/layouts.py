@@ -25,12 +25,11 @@ layouts = [
     # Try more layouts by unleashing below layouts.
     # layout.Bsp(),
     # layout.Columns(**layout_theme),
-    layout.Matrix(),
-    # layout.MonadTall(),
-    # layout.MonadWide(),
+    # layout.Matrix(),
+    layout.MonadWide(**layout_theme),
     # layout.RatioTile(),
     # layout.Tile(),
-    # layout.TreeTab(),
+    layout.TreeTab(**layout_theme),
     # layout.VerticalTile(),
     # layout.Zoomy(),
 ]
