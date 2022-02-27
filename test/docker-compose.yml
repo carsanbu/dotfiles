@@ -1,0 +1,7 @@
+dotfiles-test:
+  image: debian:sid
+  volumes:
+    - "..:/root/.dotfiles:ro"
+  working_dir: /root/.dotfiles
+  command: ./setup.sh
+  tty: true
