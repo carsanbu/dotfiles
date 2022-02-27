@@ -112,12 +112,6 @@ if __name__ in ["config", "__main__"]:
         keys.append(Key([mod], str(i), lazy.group[name].toscreen()))        # Switch to another group
         keys.append(Key([mod, "shift"], str(i), lazy.window.togroup(name))) # Send current window to another group
 
-    # Pasar a módulo theme.py
-    main_color = '9cff4d'
-    yellow = 'f3e500'
-    gray = '1D2330'
-    #
-
     widget_defaults = dict(
         font='CodeNewRoman Nerd Font Complete',
         fontsize=14,
@@ -129,10 +123,10 @@ if __name__ in ["config", "__main__"]:
     w1 = [
             widget.WindowName(),
             widget.GroupBox(
-                active=main_color,
-                this_current_screen_border=main_color,
-                this_screen_border=main_color,
-                other_screen_border=gray,
+                active=colors['green'],
+                this_current_screen_border=colors['green'],
+                this_screen_border=colors['green'],
+                other_screen_border=colors['gray'],
                 highlight_method='line'),
             widget.Chord(
                 chords_colors={ 'launch': ("#ff0000", "#ffffff") },
@@ -155,10 +149,10 @@ if __name__ in ["config", "__main__"]:
     w2 = [
             widget.WindowName(),
             widget.GroupBox(
-                active=main_color,
-                this_current_screen_border=main_color,
-                this_screen_border=main_color,
-                other_screen_border=gray,
+                active=colors['green'],
+                this_current_screen_border=colors['green'],
+                this_screen_border=colors['green'],
+                other_screen_border=colors['gray'],
                 highlight_method='line'),
             widget.Chord(
                 chords_colors={ 'launch': ("#ff0000", "#ffffff") },
