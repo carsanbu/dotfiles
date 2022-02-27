@@ -59,16 +59,15 @@ if __name__ in ["config", "__main__"]:
     terminal = "alacritty" # guess_terminal()
 
     keys = [
-        # Switch between windows in current stack pane
-        Key([mod], "k", lazy.layout.down(),
-            desc="Move focus down in stack pane"),
-        Key([mod], "j", lazy.layout.up(),
-            desc="Move focus up in stack pane"),
+        Key([mod], "h", lazy.layout.shrink_main()),
+        Key([mod], "l", lazy.layout.grow_main()),
+        Key([mod], "j", lazy.layout.grow()),
+        Key([mod], "k", lazy.layout.shrink()),
 
         # Move windows up or down in current stack
-        Key([mod, "control"], "k", lazy.layout.shuffle_down(),
+        Key([mod, CTRL], "k", lazy.layout.shuffle_down(),
             desc="Move window down in current stack "),
-        Key([mod, "control"], "j", lazy.layout.shuffle_up(),
+        Key([mod, CTRL], "j", lazy.layout.shuffle_up(),
             desc="Move window up in current stack "),
 
         # Switch window focus to other pane(s) of stack
@@ -76,24 +75,26 @@ if __name__ in ["config", "__main__"]:
             desc="Switch window focus to other pane(s) of stack"),
 
         # Swap panes of split stack
-        Key([mod, "shift"], "space", lazy.layout.rotate(),
+        Key([mod, SHIFT], "space", lazy.layout.rotate(),
             desc="Swap panes of split stack"),
         Key([mod], 'f', lazy.window.toggle_fullscreen(), desc='Toggle fullscreen mode'),
         # Toggle between split and unsplit sides of stack.
         # Split = all windows displayed
         # Unsplit = 1 window displayed, like Max layout, but still with
         # multiple stack panes
-        Key([mod, "shift"], "Return", lazy.layout.toggle_split(),
+        Key([mod, SHIFT], "Return", lazy.layout.toggle_split(),
             desc="Toggle between split and unsplit sides of stack"),
-        Key([mod], "Return", lazy.spawn(terminal), desc="Launch terminal"),
+        Key([mod], RETURN, lazy.spawn(terminal), desc="Launch terminal"),
 
         # Toggle between different layouts as defined below
         Key([mod], TAB, lazy.next_layout(), desc="Toggle between layouts"),
         Key([mod], "w", lazy.window.kill(), desc="Kill focused window"),
 
-        Key([mod, "control"], "r", lazy.restart(), desc="Restart qtile"),
-        Key([mod, "control"], "q", lazy.shutdown(), desc="Shutdown qtile"),
+        Key([mod, CTRL], "r", lazy.restart(), desc="Restart qtile"),
+        Key([mod, CTRL], "q", lazy.shutdown(), desc="Shutdown qtile"),
         Key([mod], "r", lazy.spawn(os.path.expanduser('~/.local/bin/launcher.sh'))),
+        Key([mod], "b", lazy.spawn('firefox')),
+
         # Sound
         Key([], "XF86AudioMute", lazy.spawn("amixer -q set Master toggle")),
         Key([], "XF86AudioLowerVolume", lazy.spawn("amixer -c 0 sset Master 1- unmute")),
@@ -210,4 +211,9 @@ def autostart():
     log = os.path.expanduser('~/.local/share/qtile/autostart.log')
     with open(log, 'w') as logfile:
         run([home], stdout=logfile, shell=True)
+
+@hook.subscribe.screen_change
+def restart_on_randr(qtile, ev):
+    '''Restart on screen change'''
+    qtile.cmd_restart()
 
