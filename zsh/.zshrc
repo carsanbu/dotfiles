@@ -181,3 +181,8 @@ rangercd () {
     fi
 }
 bindkey -s '^o' 'rangercd\n'
+
+# Default git diff
+git_diff() {
+  git diff --no-ext-diff -w "$@" | vim -R –
+}
