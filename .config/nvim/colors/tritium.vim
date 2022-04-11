@@ -33,7 +33,7 @@ hi iCursor         guifg=#000000 guibg=#d0d0d0
 hi Debug           guifg=#d0d0d0               gui=bold
 hi Define          guifg=#9cff4d
 hi Delimiter       guifg=#626b7c
-hi DiffAdd                       guibg=#9cff4d
+hi DiffAdd         guifg=#000000 guibg=#9cff4d
 hi DiffChange      guifg=#000000 guibg=#d0d0d0
 hi DiffDelete      guifg=#ff4d4d guibg=#000000
 hi DiffText                      guibg=#000000 gui=italic,bold
