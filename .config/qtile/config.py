@@ -57,6 +57,7 @@ if __name__ in ["config", "__main__"]:
 
     mod = WIN
     terminal = "alacritty" # guess_terminal()
+    isLaptop = False
 
     keys = [
         Key([mod], "h", lazy.layout.shrink_main()),
@@ -135,8 +136,6 @@ if __name__ in ["config", "__main__"]:
             widget.CurrentLayoutIcon(scale=0.6),
             widget.Spacer(),
             widget.Systray(),
-            Wlan(colors),
-            Battery(colors),
             widget.KeyboardLayout(configured_keyboards=['us altgr-intl','es','us'], fmt = ' {}'),
             widget.GenPollText(func=bt_status, update_interval=5,
                 mouse_callbacks={'Button1': bt_mouse_click},
@@ -146,6 +145,10 @@ if __name__ in ["config", "__main__"]:
             widget.Clock(format=' %H:%M'),
             widget.TextBox(text = '', mouse_callbacks={'Button1': notification_toggle}),
         ]
+    if isLaptop:
+        w1.insert(6, Battery(colors))
+        w1.insert(6, Wlan(colors))
+
     w2 = [
             widget.WindowName(),
             widget.GroupBox(
