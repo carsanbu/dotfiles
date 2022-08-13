@@ -12,8 +12,8 @@
 # gnome_do	slingshot		appdrawer			appdrawer_alt	appfolder
 # column	row				row_center			screen			row_dock		row_dropdown
 
-theme="blurry"
-dir="$HOME/.config/rofi/launchers/misc"
+theme="blurry-poweroff"
+dir="$HOME/.config/rofi/themes"
 dir_bin="$HOME/.local/bin"
 
 #rofi -no-lazy-grab -show drun -modi drun -theme $dir/"$theme"

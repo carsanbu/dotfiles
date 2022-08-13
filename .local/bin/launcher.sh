@@ -13,8 +13,7 @@
 # column	row				row_center			screen			row_dock		row_dropdown
 
 theme="blurry"
-dir="$HOME/.config/rofi/launchers/misc"
-dir_bin="$HOME/.local/bin"
+dir="$HOME/.config/rofi/themes"
 
-#rofi -no-lazy-grab -show drun -modi drun -theme $dir/"$theme"
 rofi -no-lazy-grab -combi-modi drun,ssh -show combi -modi combi -theme $dir/"$theme"
+
