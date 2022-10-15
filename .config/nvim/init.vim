@@ -15,7 +15,6 @@ Plug 'frankier/neovim-colors-solarized-truecolor-only'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'ternjs/tern_for_vim'
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'chrisbra/colorizer'
 Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-fugitive'
@@ -56,12 +55,14 @@ else
 endif
 
 " Tabulación y espacios
-"set expandtab   " Tabula usando espacios
 set shiftwidth=2
 set tabstop=2     " Espacios que mostramos por tabulador
 set smarttab
 set cindent
 let indent_guides_enable_on_vim_startup = 1
+autocmd Filetype html setlocal expandtab
+autocmd Filetype javascript setlocal expandtab
+autocmd Filetype typescriptreact setlocal expandtab
 
 " UI config
 set number          " Muestra número de lineas.
@@ -77,7 +78,7 @@ set list listchars=eol:↵,tab:⇥\ ,trail:- " Muestralos tabuladores y saltos d
 set so=14     " Lineas movidas por scroll
 
 " Leader
-let mapleader = ","
+let mapleader = ";"
 
 " Edita vim config
 :nnoremap <leader>ev :vsplit $MYVIMRC<cr>
@@ -96,15 +97,19 @@ if has("unix")
   let g:python_host_prog='/usr/bin/python'
 endif
 
-vmap <C-c> "+yi
-vmap <C-x> "+c
-vmap <C-v> c<ESC>"+p
-imap <C-v> <C-r><C-o>+
+"Buffers
+nmap <Leader>n :bn<cr>
+nmap <Leader>p :bp<cr>
+
+
+" Mapea ctrl-c, ctrl-v
+"vmap <C-c> "+yi
+"vmap <C-x> "+c
+"vmap <C-v> c<ESC>"+p
+"imap <C-v> <C-r><C-o>+
 
 " Configuración extra
 " Configuración de plugins
-let g:coc_global_extensions=['coc-tsserver', 'coc-css', 'coc-html', 'coc-json', 'coc-clangd', 'coc-cmake', 'coc-markdownlint', 'coc-python', 'coc-sh', 'coc-rls', 'coc-xml', 'coc-yaml']
-
 let g:netrw_banner = 0
 let g:netrw_liststyle = 3
 let g:netrw_browse_split = 4
@@ -113,7 +118,7 @@ let g:netrw_winsize = 25
 
 let g:SuperTabDefaultCompletionType    = '<C-n>'
 let g:SuperTabCrMapping                = 0
-let g:UltiSnipsExpandTrigger           = '<tab>'
+let g:UltiSnipsExpandTrigger           = '<c-space>'
 let g:UltiSnipsJumpForwardTrigger      = '<tab>'
 let g:UltiSnipsJumpBackwardTrigger     = '<s-tab>'
 let g:ycm_key_list_select_completion   = ['<C-j>', '<C-n>', '<Down>']
