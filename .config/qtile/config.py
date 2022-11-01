@@ -56,14 +56,15 @@ if __name__ in ["config", "__main__"]:
     SPACE = 'space'
 
     mod = WIN
-    terminal = "alacritty" # guess_terminal()
+    terminal = 'alacritty'
     isLaptop = False
 
     keys = [
-        Key([mod], "h", lazy.layout.shrink_main()),
-        Key([mod], "l", lazy.layout.grow_main()),
-        Key([mod], "j", lazy.layout.grow()),
-        Key([mod], "k", lazy.layout.shrink()),
+        # Resize windows
+        Key([mod, SHIFT], "h", lazy.layout.shrink_main()),
+        Key([mod, SHIFT], "l", lazy.layout.grow_main()),
+        Key([mod, SHIFT], "j", lazy.layout.grow()),
+        Key([mod, SHIFT], "k", lazy.layout.shrink()),
 
         # Move windows up or down in current stack
         Key([mod, CTRL], "k", lazy.layout.shuffle_down(),
@@ -95,6 +96,7 @@ if __name__ in ["config", "__main__"]:
         Key([mod, CTRL], "q", lazy.shutdown(), desc="Shutdown qtile"),
         Key([mod], "r", lazy.spawn(os.path.expanduser('~/.local/bin/launcher.sh'))),
         Key([mod], "b", lazy.spawn('firefox')),
+        Key([mod], "e", lazy.spawn([terminal, '-e', 'ranger'])),
 
         # Sound
         Key([], "XF86AudioMute", lazy.spawn("amixer -q set Master toggle")),
@@ -178,7 +180,7 @@ if __name__ in ["config", "__main__"]:
 
     screens = [
         Screen(top=bar.Bar(w1, 28, background='#000000', opacity=0.8)),
-        Screen(top=bar.Bar(w2, 28, background='#000000', opacity=0.8))
+        #Screen(top=bar.Bar(w2, 28, background='#000000', opacity=0.8))
     ]
 
     # Drag floating layouts.
