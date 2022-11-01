@@ -1,2 +1,6 @@
 source "$HOME/.cargo/env"
-unimatrix -w -a
+. "$HOME/.cargo/env"
+
+# QT theme
+export QT_STYLE_OVERRIDE=kvantum
+
