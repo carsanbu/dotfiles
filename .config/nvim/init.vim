@@ -34,6 +34,7 @@ Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
 Plug 'jparise/vim-graphql'
 Plug 'vimwiki/vimwiki'
 Plug 'michal-h21/vim-zettel'
+Plug 'junegunn/goyo.vim'
 
 call plug#end()
 
@@ -62,7 +63,9 @@ set cindent
 let indent_guides_enable_on_vim_startup = 1
 autocmd Filetype html setlocal expandtab
 autocmd Filetype javascript setlocal expandtab
+autocmd Filetype typescript setlocal expandtab
 autocmd Filetype typescriptreact setlocal expandtab
+autocmd Filetype css setlocal expandtab
 
 " UI config
 set number          " Muestra número de lineas.
