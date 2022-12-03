@@ -179,7 +179,7 @@ if __name__ in ["config", "__main__"]:
         ]
 
     screens = [
-        Screen(top=bar.Bar(w1, 28, background='#000000', opacity=0.8)),
+        Screen(top=bar.Bar(w1, 28, background='#000000a0', opacity=0.8)),
         #Screen(top=bar.Bar(w2, 28, background='#000000', opacity=0.8))
     ]
 
