@@ -1,0 +1,18 @@
+(defwidget main []
+  (box :orientation "v" :space-evenly "false" 
+    (label :class "time" :halign "end" :text time)
+    (label :class "weekday" :halign "end" :text " ${weekday}")
+    (label :class "date" :halign "end" :text date)
+    (label :class "weather" :halign "end" :text weather)))
+(defpoll time :interval "5s"  "date +%H:%M")
+(defpoll weekday :interval "1h"  "date +%A")
+(defpoll date :interval "1h"  "date \"+%d de %B %Y\"")
+(defpoll weather :interval "10m"  "weather")
+(defwindow main_window
+  :stacking "bg" 
+  :wm-ignore true
+  :focusable false
+  :windowtype "dock"
+  :screen 0 
+  :geometry (geometry :anchor "top left" :x "10px" :y "60%" :width "25%" :height "200px")
+  (main))

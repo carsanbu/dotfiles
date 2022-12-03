@@ -25,6 +25,6 @@ run /usr/lib/x86_64-linux-gnu/libexec/polkit-kde-authentication-agent-1
 #kdeconnect-indicator &
 run xss-lock -l -- multilockscreen --lock blur
 
-run $HOME/.local/bin/eww
-run $HOME/.local/bin/eww open main_window
+#run $HOME/.local/bin/eww daemon
+#run $HOME/.local/bin/eww open main_window
 
