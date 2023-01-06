@@ -37,6 +37,7 @@ from theme import colors
 from widget.battery import Battery
 from widget.wlan import Wlan
 from widget.keyboard_layout import KeyboardLayout
+from show_keys import show_keys
 
 def bt_status():
    return subprocess.getoutput('/home/carlos/.local/bin/system-bluetooth-bluetoothctl.sh')
@@ -203,6 +204,14 @@ if __name__ in ["config", "__main__"]:
 
     # Needed for some Java programs
     wmname = "LG3D"
+
+    # this must be done AFTER all the keys have been defined
+    cheater = terminal + " --class='Cheater' -e sh -c 'echo \"" + show_keys(
+        keys
+    ) + "\" | fzf --prompt=\"Search for a keybind: \" --border=rounded --margin=1% --color=dark --height 100% --reverse --header=\"       QTILE CHEAT SHEET \" --info=hidden --header-first'"
+    keys.extend([
+        Key([WIN], "F1", lazy.spawn(cheater), desc="Print keyboard bindings"),
+    ])
 
 @hook.subscribe.startup
 def autostart():
