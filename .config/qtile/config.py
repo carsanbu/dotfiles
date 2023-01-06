@@ -62,10 +62,12 @@ if __name__ in ["config", "__main__"]:
 
     keys = [
         # Resize windows
-        Key([mod, SHIFT], "h", lazy.layout.shrink_main()),
-        Key([mod, SHIFT], "l", lazy.layout.grow_main()),
-        Key([mod, SHIFT], "j", lazy.layout.grow()),
-        Key([mod, SHIFT], "k", lazy.layout.shrink()),
+        Key([mod, SHIFT], "i", lazy.layout.grow(),
+            desc='Grow window'),
+        Key([mod, SHIFT], "m", lazy.layout.shrink(),
+            desc='Shrink window'),
+        Key([mod, SHIFT], "n", lazy.layout.normalize(),
+            desc='Normalize window'),
 
         # Move windows up or down in current stack
         Key([mod, CTRL], "k", lazy.layout.shuffle_down(),
