@@ -66,6 +66,8 @@ autocmd Filetype javascript setlocal expandtab
 autocmd Filetype typescript setlocal expandtab
 autocmd Filetype typescriptreact setlocal expandtab
 autocmd Filetype css setlocal expandtab
+autocmd Filetype markdown setlocal expandtab
+autocmd Filetype markdown setlocal spell spelllang=en_us,es
 
 " UI config
 set number          " Muestra número de lineas.
