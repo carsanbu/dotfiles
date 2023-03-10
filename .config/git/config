@@ -2,6 +2,6 @@
 	email = carsanbu@gmail.com
 	name = Carlos Sanmartín Bustos
 [diff]
-  external = git_diff_wrapper
+	tool = vimdiff
 [pager]
-  diff =
+	diff =
