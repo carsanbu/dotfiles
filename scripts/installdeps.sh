@@ -4,7 +4,7 @@ echo "******* UPGRADING THE SYSTEM *******"
 apt update
 apt upgrade -y
 echo "******* INSTALL DEPENDECIES *******"
-apt install -y curl git zsh stow neovim neofetch newsboat nitrogen rofi python3-pip python3-dev python3-setuptools fzf xss-lock dunst conky-std silversearcher-ag picom ansiweather
+apt install -y curl git zsh stow neovim neofetch newsboat nitrogen rofi python3-pip python3-dev python3-setuptools fzf xss-lock dunst conky-std silversearcher-ag picom ansiweather ranger ueberzug
 # Dependencies qtile
 apt install -y libpangocairo-1.0-0 python3-xcffib python3-cairocffi libiw-dev
 # Dependencies flashfocus

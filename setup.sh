@@ -7,9 +7,8 @@ echo "******* INSTALLING PACKAGES *******"
 sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
        https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
 
-pip3 install thefuck
 pip3 install git+https://github.com/will8211/unimatrix.git
-pip3 install qtile iwlib flashfocus neovim-remote ranger-fm ueberzug
+pip3 install qtile iwlib flashfocus neovim-remote ranger-fm
 
 
 echo "******* LINKING CONFIGS *******"
