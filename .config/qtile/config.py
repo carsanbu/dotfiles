@@ -35,7 +35,7 @@ from libqtile.utils import guess_terminal
 from layouts import layouts, floating_layout, group_names
 from theme import colors
 from widget.battery import Battery
-from widget.wlan import Wlan
+#from widget.wlan import Wlan
 from widget.keyboard_layout import KeyboardLayout
 from show_keys import show_keys
 
@@ -152,7 +152,7 @@ if __name__ in ["config", "__main__"]:
         ]
     if isLaptop:
         w1.insert(6, Battery(colors))
-        w1.insert(6, Wlan(colors))
+        #w1.insert(6, Wlan(colors))
 
     w2 = [
             widget.WindowName(),
@@ -169,7 +169,7 @@ if __name__ in ["config", "__main__"]:
             widget.CurrentLayoutIcon(scale=0.6),
             widget.Spacer(),
             widget.Systray(),
-            Wlan(colors),
+            #Wlan(colors),
             Battery(colors),
             KeyboardLayout(colors),
             widget.GenPollText(func=bt_status, update_interval=5,
