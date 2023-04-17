@@ -26,7 +26,7 @@ Plug 'mhinz/vim-startify'
 Plug 'tpope/vim-surround'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
-"Plug 'Yggdroot/indentLine'
+Plug 'Yggdroot/indentLine'
 Plug 'pangloss/vim-javascript'
 Plug 'leafgarland/typescript-vim'
 Plug 'peitalin/vim-jsx-typescript'
@@ -141,6 +141,10 @@ let g:vimwiki_ext2syntax = {'.md': 'markdown'}
 
 " taskwiki
 let g:taskwiki_disable_concealcursor = 'yes'
+
+" indentLine
+let g:indentLine_concealcursor = ''
+let g:indentLine_conceallevel = 2
 
 " air-line
 let g:airline#extensions#tabline#enabled = 1
