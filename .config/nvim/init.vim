@@ -1,46 +1,48 @@
 "nvimrc
 "
 " Configuración básica
+" vim:fdm=marker
 
+" Leader
+let mapleader = ";"
+
+" Plugings {{{
 " Vundle config
 filetype off
 set nocompatible
 filetype off
 
 call plug#begin('~/.config/nvim/plugged')
-
-" Custom Bundles
 Plug 'ctrlpvim/ctrlp.vim'
-Plug 'frankier/neovim-colors-solarized-truecolor-only'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-Plug 'ternjs/tern_for_vim'
 Plug 'chrisbra/colorizer'
 Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-fugitive'
-Plug 'jceb/vim-orgmode'
-Plug 'SirVer/ultisnips', {'for': ['sh', 'python', 'markdown', 'c']}
-Plug 'honza/vim-snippets', {'for': ['sh', 'python', 'markdown', 'c']}
+" Plug 'SirVer/ultisnips', {'for': ['sh', 'python', 'markdown', 'c']}
+" Plug 'honza/vim-snippets', {'for': ['sh', 'python', 'markdown', 'c']}
 Plug 'ervandew/supertab'
 Plug 'mhinz/vim-startify'
 Plug 'tpope/vim-surround'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
-Plug 'Yggdroot/indentLine'
+"Plug 'Yggdroot/indentLine'
 Plug 'pangloss/vim-javascript'
 Plug 'leafgarland/typescript-vim'
 Plug 'peitalin/vim-jsx-typescript'
 Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
 Plug 'jparise/vim-graphql'
 Plug 'vimwiki/vimwiki'
-Plug 'michal-h21/vim-zettel'
 Plug 'junegunn/goyo.vim'
-
+Plug 'eslint/eslint'
+Plug 'jxnblk/vim-mdx-js'
+Plug 'tools-life/taskwiki'
 call plug#end()
 
-filetype plugin indent on
+"filetype plugin indent on
+" }}}
 
-" Color config
+" Colores {{{
 syntax on     " Activa coloreado de sintaxis.
 
 " Esquema de color. Elegir uno
@@ -54,8 +56,9 @@ if has('nvim')
 else
   set t_Co 256 " 256 colores. No debería ser necesario usando una correcta configuración del terminal
 endif
+" }}}
 
-" Tabulación y espacios
+" Tabulación y espacios {{{
 set shiftwidth=2
 set tabstop=2     " Espacios que mostramos por tabulador
 set smarttab
@@ -68,26 +71,20 @@ autocmd Filetype typescriptreact setlocal expandtab
 autocmd Filetype css setlocal expandtab
 autocmd Filetype markdown setlocal expandtab
 autocmd Filetype markdown setlocal spell spelllang=en_us,es
+autocmd Filetype markdown.mdx setlocal spell spelllang=en_us,es
+" }}}
 
-" UI config
+" UI config {{{
 set number          " Muestra número de lineas.
 set cursorline      " Señala la linea actual.
 set wildmenu        " Autocompletado para la barra de comandos.
 set lazyredraw      " Redibuja pantalla solo cuando es estríctamente
 set colorcolumn=80
-" necesario.
 set showmatch       " Señala [{()}]
 set mouse=n         " Activa el ratón
 "set ttymouse=xterm2 " Compatibilidad con la consola
 set list listchars=eol:↵,tab:⇥\ ,trail:- " Muestralos tabuladores y saltos de linea.
 set so=14     " Lineas movidas por scroll
-
-" Leader
-let mapleader = ";"
-
-" Edita vim config
-:nnoremap <leader>ev :vsplit $MYVIMRC<cr>
-:nnoremap <leader>sv :source $MYVIMRC<cr>
 
 " Folding (ocultado de bloques anidados)
 set foldenable    " Activa folding
@@ -96,25 +93,26 @@ set foldnestmax=10  " Máximo de 10
 set foldmethod=indent " Basado en identado
 nnoremap <space> za
 
-" Path de Python
+" }}}
+
+" Edita vim config {{{
+:nnoremap <leader>ev :vsplit $MYVIMRC<cr>
+:nnoremap <leader>sv :source $MYVIMRC<cr>
+" }}}
+
+" Path de Python {{{
 if has("unix")
   let s:uname = system("uname")
-  let g:python_host_prog='/usr/bin/python'
+  let g:python_host_prog='/usr/bin/python3'
 endif
+" }}}
 
-"Buffers
+"Buffers {{{
 nmap <Leader>n :bn<cr>
 nmap <Leader>p :bp<cr>
+" }}}
 
-
-" Mapea ctrl-c, ctrl-v
-"vmap <C-c> "+yi
-"vmap <C-x> "+c
-"vmap <C-v> c<ESC>"+p
-"imap <C-v> <C-r><C-o>+
-
-" Configuración extra
-" Configuración de plugins
+" Configuración de plugins {{{
 let g:netrw_banner = 0
 let g:netrw_liststyle = 3
 let g:netrw_browse_split = 4
@@ -141,6 +139,9 @@ let wiki_1.ext = '.md'
 let g:vimwiki_list = [wiki_1]
 let g:vimwiki_ext2syntax = {'.md': 'markdown'}
 
+" taskwiki
+let g:taskwiki_disable_concealcursor = 'yes'
+
 " air-line
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_powerline_fonts = 1
@@ -163,3 +164,4 @@ let g:airline_mode_map = {
       \ 'v'      : '',
       \ 'V'      : '',
       \ }
+" }}}
