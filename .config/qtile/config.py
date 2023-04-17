@@ -29,7 +29,7 @@ import subprocess
 from subprocess import run
 from typing import List  # noqa: F401
 from libqtile import bar, layout, widget, hook
-from libqtile.config import Click, Drag, Group, Key, Screen
+from libqtile.config import Click, Drag, Group, Key, Screen, Match
 from libqtile.lazy import lazy
 from libqtile.utils import guess_terminal
 from layouts import layouts, floating_layout, group_names
@@ -119,6 +119,11 @@ if __name__ in ["config", "__main__"]:
     for i, (name, kwargs) in enumerate(group_names, 1):
         keys.append(Key([mod], str(i), lazy.group[name].toscreen()))        # Switch to another group
         keys.append(Key([mod, "shift"], str(i), lazy.window.togroup(name))) # Send current window to another group
+    # Group 9 is for services
+    groups[8].matches = [
+        Match(wm_class=['Syncthing GTK']),
+        Match(wm_class=['KeePassXC'])
+    ]
 
     widget_defaults = dict(
         font='CodeNewRoman Nerd Font Complete',
@@ -135,7 +140,8 @@ if __name__ in ["config", "__main__"]:
                 this_current_screen_border=colors['green'],
                 this_screen_border=colors['green'],
                 other_screen_border=colors['gray'],
-                highlight_method='line'),
+                highlight_method='line',
+                disable_drag=True),
             widget.Chord(
                 chords_colors={ 'launch': ("#ff0000", "#ffffff") },
                 name_transform=lambda name: name.upper(),
@@ -184,7 +190,7 @@ if __name__ in ["config", "__main__"]:
         ]
 
     screens = [
-        Screen(top=bar.Bar(w1, 28, background='#000000a0', opacity=0.8)),
+        Screen(top=bar.Bar(w1, 28, background='#000000f0', opacity=0.7)),
         #Screen(top=bar.Bar(w2, 28, background='#000000', opacity=0.8))
     ]
 
