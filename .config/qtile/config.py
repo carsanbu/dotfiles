@@ -26,7 +26,6 @@
 
 import os
 import subprocess
-from subprocess import run
 from typing import List  # noqa: F401
 from libqtile import bar, layout, widget, hook
 from libqtile.config import Click, Drag, Group, Key, Screen, Match
@@ -225,10 +224,8 @@ if __name__ in ["config", "__main__"]:
 
 @hook.subscribe.startup
 def autostart():
-    home = os.path.expanduser('~/.config/qtile/autostart.sh')
-    log = os.path.expanduser('~/.local/share/qtile/autostart.log')
-    with open(log, 'w') as logfile:
-        run([home], stdout=logfile, shell=True)
+    autostart = os.path.expanduser('~/.config/qtile/autostart.sh')
+    subprocess.call([autostart])
 
 @hook.subscribe.screen_change
 def restart_on_randr(qtile, ev):
