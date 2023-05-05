@@ -109,8 +109,8 @@ if __name__ in ["config", "__main__"]:
             '~/.local/bin/launcher-poweroff.sh'))),
         Key([mod], 'q', lazy.spawn(os.path.expanduser(
             '~/.local/bin/launcher-poweroff.sh'))),
-        # Locker
-        Key([mod], 'l', lazy.spawn('multilockscreen --lock blur'), desc='Bloquea el escritorio')
+        Key([mod], 'l', lazy.spawn('multilockscreen --lock blur'), desc='Bloquea el escritorio'),
+        Key([mod], 'v', lazy.spawn(os.path.expanduser('~/.local/bin/launcher-clipboard.sh')), desc='Historial del clipboard')
     ]
 
     groups = [Group(name, **kwargs) for name, kwargs in group_names]

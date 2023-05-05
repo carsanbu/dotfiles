@@ -63,6 +63,12 @@ echo "******* INSTALLING WIDGETS *******"
 	chmod +x ./eww
 	cp eww ~/.local/bin/
 )
+
+echo "******* INSTALLING GREENCLIP *******"
+(
+	cd ~/.local/bin/
+	wget https://github.com/erebe/greenclip/releases/download/v4.2/greenclip
+)
 cd ../../
 
 echo "******* INSTALLING RANGER *******"
