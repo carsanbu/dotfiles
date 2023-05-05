@@ -114,10 +114,6 @@ zmodload zsh/regex
 #xprop -f _KDE_NET_WM_BLUR_BEHIND_REGION 32c -set _KDE_NET_WM_BLUR_BEHIND_REGION 0 -id $wid; done
 #fi
 
-path+=('/home/carlos/.local/bin')
-path+=('/home/carlos/workspace/flutter/bin')
-path+=('/home/carlos/.cargo/bin')
-
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
@@ -184,19 +180,4 @@ bindkey -s '^o' 'rangercd\n'
 git_diff() {
   git diff --no-ext-diff -w "$@" | vim -R –
 }
-
-# >>> conda initialize >>>
-# !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/home/carlos/miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
-if [ $? -eq 0 ]; then
-    eval "$__conda_setup"
-else
-    if [ -f "/home/carlos/miniconda3/etc/profile.d/conda.sh" ]; then
-        . "/home/carlos/miniconda3/etc/profile.d/conda.sh"
-    else
-        export PATH="/home/carlos/miniconda3/bin:$PATH"
-    fi
-fi
-unset __conda_setup
-# <<< conda initialize <<<
 
