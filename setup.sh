@@ -69,6 +69,18 @@ echo "******* INSTALLING GREENCLIP *******"
 	cd ~/.local/bin/
 	wget https://github.com/erebe/greenclip/releases/download/v4.2/greenclip
 )
+
+echo "******* INSTALLING ROFI-EMOJI *******"
+(
+	git clone https://github.com/Mange/rofi-emoji.git && cd rofi-emoji
+	autoreconf -i
+	mkdir build
+	cd build/
+	../configure
+	make
+	sudo make install
+)
+
 cd ../../
 
 echo "******* INSTALLING RANGER *******"

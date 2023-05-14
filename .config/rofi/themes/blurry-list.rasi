@@ -1,0 +1,91 @@
+* {
+	background:						#00000080;
+	background-alt:				#10101050;
+	background-bar:				#f2f2f215;
+	foreground:						#f2f2f2EE;
+	accent:								#3DAEE966;
+
+	transparency:					"real";
+	background-color:			#00000000;
+	text-color:							@foreground;
+}
+
+window {
+	background-color: @background;
+	border:									0px;
+	border-color:						@border;
+	border-radius:					0px;
+	width:									30%;
+	location:								center;
+	x-offset:								0;
+	y-offset:								0;
+}
+
+prompt {
+	enabled:								true;
+	padding:								0.30% 1% 0% 0.5%;
+	font:										"CodeNewRoman Nerd Font 12";
+}
+
+entry {
+	placeholder-color:			@foreground;
+	expand:									true;
+	horizontal-align:				0;
+	placeholder:						"";
+	padding:								0.10% 0% 0% 0%;
+	blink:									true;
+}
+
+inputbar {
+	children:								[ prompt, entry ];
+	background-color:				@background-bar;
+	expand:									false;
+	border:									0% 0% 0% 0%;
+	border-radius:					4px;
+	border-color:						@accent;
+	margin:									1% 1% 1% 1%;
+	padding:								1%;
+}
+
+listview {
+	expand:									true;
+	columns:								1;
+	lines:									10;
+	spacing:								0px;
+	cycle:									false;
+	dynamic:								true;
+	layout:									vertical;
+}
+
+mainbox {
+	border:									0% 0% 0% 0%;
+	border-color:						@accent;
+	children:								[ inputbar, listview ];
+	spacing:								2%;
+	padding:								2% 1% 2% 1%;
+}
+
+element {
+	orientation:						vertical;
+	padding:								2% 0.5% 2% 0.5%;
+}
+
+element-icon {
+	size:										0px;
+	border:									0px;
+}
+
+element-text {
+	expand:									true;
+	horizontal-align:				0;
+	vertical-align:					0.5;
+	margin:									0.5% 0.5% -0.5% 0.5%;
+}
+
+element selected {
+	background-color:				@background-bar;
+	border:									0% 0% 0% 0%;
+	border-radius:					4px;
+	border-color:						@accent;
+}
+
