@@ -35,7 +35,7 @@ from layouts import layouts, floating_layout, group_names
 from theme import colors
 from widget.battery import Battery
 #from widget.wlan import Wlan
-from widget.keyboard_layout import KeyboardLayout
+#from widget.keyboard_layout import KeyboardLayout
 from show_keys import show_keys
 
 def bt_status():
@@ -127,8 +127,8 @@ if __name__ in ["config", "__main__"]:
     ]
 
     widget_defaults = dict(
-        font='CodeNewRoman Nerd Font Complete',
-        fontsize=14,
+        font='CodeNewRoman Nerd Font',
+        fontsize=18,
         padding=8,
         foreground=colors['main'],
     )
@@ -149,13 +149,11 @@ if __name__ in ["config", "__main__"]:
             ),
             widget.CurrentLayoutIcon(scale=0.6),
             widget.Spacer(),
-            widget.Systray(),
-            widget.KeyboardLayout(configured_keyboards=['us altgr-intl','es','us'], fmt = ' {}'),
+            widget.StatusNotifier(),
             widget.GenPollText(func=bt_status, update_interval=5,
                 mouse_callbacks={'Button1': bt_mouse_click},
             ),
-            widget.TextBox(text = ' ', padding = 0),
-            widget.Volume(padding = 5),
+            widget.Volume(fmt=' {}'),
             widget.Clock(format=' %H:%M'),
             widget.TextBox(text = '', mouse_callbacks={'Button1': notification_toggle}),
         ]
@@ -177,10 +175,9 @@ if __name__ in ["config", "__main__"]:
             ),
             widget.CurrentLayoutIcon(scale=0.6),
             widget.Spacer(),
-            widget.Systray(),
+            widget.StatusNotifier(),
             #Wlan(colors),
             Battery(colors),
-            KeyboardLayout(colors),
             widget.GenPollText(func=bt_status, update_interval=5,
                 mouse_callbacks={'Button1': bt_mouse_click},
             ),
