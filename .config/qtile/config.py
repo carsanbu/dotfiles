@@ -209,6 +209,7 @@ if __name__ in ["config", "__main__"]:
     cursor_warp = False
     auto_fullscreen = True
     focus_on_window_activation = "smart"
+    auto_minimize = False
 
     # Needed for some Java programs
     wmname = "LG3D"
