@@ -34,6 +34,7 @@ Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
 Plug 'jparise/vim-graphql'
 Plug 'vimwiki/vimwiki'
 Plug 'junegunn/goyo.vim'
+Plug 'junegunn/limelight.vim'
 Plug 'eslint/eslint'
 Plug 'jxnblk/vim-mdx-js'
 Plug 'tools-life/taskwiki'
@@ -156,6 +157,20 @@ let g:ycm_key_list_previous_completion = ['<C-k>', '<C-p>', '<Up>']
 
 let g:UltiSnipsEditSplit="vertical"
 let g:UltiSnipsListSnippets="<c-t>"
+
+" Focus mode
+function! GoyoBefore()
+  Limelight
+  set nocursorline
+endfunction
+
+function! GoyoAfter()
+  Limelight!
+  set cursorline
+endfunction
+
+let g:goyo_callbacks = [function('GoyoBefore'), function('GoyoAfter')]
+let g:limelight_priority = -1
 
 " vimwiki
 let wiki_1 = {}
