@@ -57,7 +57,6 @@ if __name__ in ["config", "__main__"]:
 
     mod = WIN
     terminal = 'alacritty'
-    isLaptop = False
 
     keys = [
         # Resize windows
@@ -157,9 +156,8 @@ if __name__ in ["config", "__main__"]:
             widget.Clock(format=' %H:%M'),
             widget.TextBox(text = '', mouse_callbacks={'Button1': notification_toggle}),
         ]
-    if isLaptop:
+    if os.path.isdir("/sys/module/battery"):
         w1.insert(6, Battery(colors))
-        #w1.insert(6, Wlan(colors))
 
     w2 = [
             widget.WindowName(),
@@ -181,15 +179,14 @@ if __name__ in ["config", "__main__"]:
             widget.GenPollText(func=bt_status, update_interval=5,
                 mouse_callbacks={'Button1': bt_mouse_click},
             ),
-            widget.TextBox(text = ' ', padding = 0),
-            widget.Volume(padding = 5),
+            widget.Volume(fmt=' {}'),
             widget.Clock(format='  %H:%M'),
             widget.TextBox(text = '', mouse_callbacks={'Button1': notification_toggle}),
         ]
 
     screens = [
         Screen(top=bar.Bar(w1, 28, background='#000000f0', opacity=0.7)),
-        #Screen(top=bar.Bar(w2, 28, background='#000000', opacity=0.8))
+        #Screen(top=bar.Bar(w2, 28, background='#000000', opacity=0.7))
     ]
 
     # Drag floating layouts.
