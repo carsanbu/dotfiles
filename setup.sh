@@ -52,7 +52,7 @@ echo "******* INSTALLING LOCKSCREEN *******"
 (
 	git clone https://github.com/jeffmhubbard/multilockscreen && cd multilockscreen
 	sudo install -Dm 755 multilockscreen /usr/local/bin/multilockscreen
-	multilockscreen -u ~/.local/share/wallpapers/cyberpunk-minimalistic-wallpapers-wp7255027.jpg
+	multilockscreen -u  ~/.local/share/wallpapers/litox9_backwards_man_far_in_neotokio_cyberpunk_city_with_neons__3134cfec-49a1-4b76-b1f0-d6a88c5794e5.png
 )
 
 echo "******* INSTALLING WIDGETS *******"

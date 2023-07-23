@@ -7,8 +7,6 @@ run() {
 	fi
 }
 
- # Wallpaper
-run nitrogen --restore
 # Compositor
 picom --experimental-backends -b
 

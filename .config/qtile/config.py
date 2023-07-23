@@ -16,8 +16,7 @@
 # The above copyright notice and this permission notice shall be included in
 # all copies or substantial portions of the Software.
 #
-# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-# IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
 # FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
 # AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 # LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
@@ -185,7 +184,11 @@ if __name__ in ["config", "__main__"]:
         ]
 
     screens = [
-        Screen(top=bar.Bar(w1, 28, background='#000000f0', opacity=0.7)),
+        Screen(
+            top=bar.Bar(w1, 28, background='#000000f0', opacity=0.7),
+            wallpaper='~/.local/share/wallpapers/litox9_backwards_man_far_in_neotokio_cyberpunk_city_with_neons__3134cfec-49a1-4b76-b1f0-d6a88c5794e5.png',
+            wallpaper_mode='stretch',
+            ),
         #Screen(top=bar.Bar(w2, 28, background='#000000', opacity=0.7))
     ]
 

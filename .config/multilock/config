@@ -13,7 +13,7 @@ solid_color=333333
 # default theme
 loginbox=00000066
 loginshadow=00000000
-locktext="Type password to unlock..."
+locktext="Escribe la contraseña..."
 font="sans-serif"
 ringcolor=ffffffff
 insidecolor=00000000
