@@ -41,8 +41,6 @@ def bt_status():
    return subprocess.getoutput('/home/carlos/.local/bin/system-bluetooth-bluetoothctl.sh')
 def bt_mouse_click(qtile):
     subprocess.run(['/home/carlos/.local/bin/system-bluetooth-bluetoothctl.sh', '--toggle'])
-def notification_toggle():
-    subprocess.run(['/home/carlos/.local/bin/notification-center-toggle.sh'])
 
 if __name__ in ["config", "__main__"]:
     # key macros
@@ -148,12 +146,19 @@ if __name__ in ["config", "__main__"]:
             widget.CurrentLayoutIcon(scale=0.6),
             widget.Spacer(),
             widget.StatusNotifier(),
+            widget.ThermalSensor(fmt=' {}'),
+            widget.NvidiaSensors(fmt=' {}'),
             widget.GenPollText(func=bt_status, update_interval=5,
                 mouse_callbacks={'Button1': bt_mouse_click},
             ),
             widget.Volume(fmt=' {}'),
+            widget.LaunchBar(text_only=True, padding=0, progs=[
+                (' ', 'flameshot gui', 'Captura de pantalla'),
+                (' ', os.path.expanduser('~/.local/bin/launcher-clipboard.sh'), 'Historial del Clipboard'),
+                # Sleep to prevent bug of vim starting too fast
+                (' ', '{} --working-directory={} -e zsh -c "sleep 0.3; vim todo.md inbox.md incubadora.md"'.format(terminal, os.path.expanduser('~/gestion/tareas')), 'Gestion de tareas' ),
+                ]),
             widget.Clock(format=' %H:%M'),
-            widget.TextBox(text = '', mouse_callbacks={'Button1': notification_toggle}),
         ]
     if os.path.isdir("/sys/module/battery"):
         w1.insert(6, Battery(colors))
@@ -180,7 +185,6 @@ if __name__ in ["config", "__main__"]:
             ),
             widget.Volume(fmt=' {}'),
             widget.Clock(format='  %H:%M'),
-            widget.TextBox(text = '', mouse_callbacks={'Button1': notification_toggle}),
         ]
 
     screens = [
