@@ -26,6 +26,7 @@
 import os
 import subprocess
 from typing import List  # noqa: F401
+from datetime import datetime
 from libqtile import bar, layout, widget, hook
 from libqtile.config import Click, Drag, Group, Key, Screen, Match
 from libqtile.lazy import lazy
@@ -41,6 +42,10 @@ def bt_status():
    return subprocess.getoutput('/home/carlos/.local/bin/system-bluetooth-bluetoothctl.sh')
 def bt_mouse_click(qtile):
     subprocess.run(['/home/carlos/.local/bin/system-bluetooth-bluetoothctl.sh', '--toggle'])
+def notify_date():
+    now = datetime.now()
+    subprocess.run(['notify-send', '-u', 'low', '-a', 'Fecha',
+        now.strftime("%A %d de %B de %Y\n%H:%M:%S %Z").capitalize()])
 
 if __name__ in ["config", "__main__"]:
     # key macros
@@ -158,7 +163,7 @@ if __name__ in ["config", "__main__"]:
                 # Sleep to prevent bug of vim starting too fast
                 (' ', '{} --working-directory={} -e zsh -c "sleep 0.3; vim todo.md inbox.md incubadora.md"'.format(terminal, os.path.expanduser('~/gestion/tareas')), 'Gestion de tareas' ),
                 ]),
-            widget.Clock(format=' %H:%M'),
+            widget.Clock(format=' %H:%M', mouse_callbacks={ 'Button1': notify_date }),
         ]
     if os.path.isdir("/sys/module/battery"):
         w1.insert(6, Battery(colors))
