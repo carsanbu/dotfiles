@@ -55,7 +55,7 @@ colorscheme tritium " Esquema de color
 if has('nvim')
   set termguicolors " True Color con NeoVim
 else
-  set t_Co 256 " 256 colores. No debería ser necesario usando una correcta configuración del terminal
+  set t_Co=256 " 256 colores. No debería ser necesario usando una correcta configuración del terminal
 endif
 " }}}
 
@@ -192,6 +192,8 @@ let g:indentLine_conceallevel = 2
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_powerline_fonts = 1
 let g:airline_theme='tritium'
+
+if has('nvim')
 let g:airline_mode_map = {
       \ '__'     : '-',
       \ 'c'      : '',
@@ -210,4 +212,5 @@ let g:airline_mode_map = {
       \ 'v'      : '',
       \ 'V'      : '',
       \ }
+endif
 " }}}
