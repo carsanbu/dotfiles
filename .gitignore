@@ -2,3 +2,4 @@ __pyicache__
 *.pyc
 .install
 .config/ranger/plugins
+.config/nvim/autoload/plug.vim

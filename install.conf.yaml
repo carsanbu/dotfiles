@@ -1,9 +1,14 @@
 - defaults:
     link:
         relink: true
+        create: true
 
 - clean: ['~']
 
 - link:
     ~/.tmux.conf: unix/tmux/tmux.conf
+    ~/.vim/vimrc: .config/nvim/init.vim
+    ~/.vim/autoload/: .config/nvim/autoload/
+    ~/.vim/colors/: .config/nvim/colors/
+    ~/.vim/spell/: .config/nvim/spell/
 
