@@ -44,19 +44,19 @@ call plug#end()
 " }}}
 
 " Colores {{{
-syntax on     " Activa coloreado de sintaxis.
-
 " Esquema de color. Elegir uno
 set background=dark
+
+syntax on     " Activa coloreado de sintaxis.
 
 colorscheme tritium " Esquema de color
 
 " Configuración de colores
-if has('nvim')
-  set termguicolors " True Color con NeoVim
-else
+if !has('nvim')
   set t_Co=256 " 256 colores. No debería ser necesario usando una correcta configuración del terminal
 endif
+
+set termguicolors
 " }}}
 
 " Tabulación y espacios {{{
