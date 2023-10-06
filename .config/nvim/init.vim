@@ -37,6 +37,7 @@ Plug 'junegunn/limelight.vim'
 Plug 'eslint/eslint'
 Plug 'jxnblk/vim-mdx-js'
 Plug 'tools-life/taskwiki'
+Plug 'preservim/tagbar'
 call plug#end()
 
 "filetype plugin indent on
