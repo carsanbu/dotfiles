@@ -13,7 +13,6 @@ set nocompatible
 filetype off
 
 call plug#begin('~/.config/nvim/plugged')
-Plug 'ctrlpvim/ctrlp.vim'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'chrisbra/colorizer'
@@ -157,6 +156,9 @@ let g:ycm_key_list_previous_completion = ['<C-k>', '<C-p>', '<Up>']
 
 let g:UltiSnipsEditSplit="vertical"
 let g:UltiSnipsListSnippets="<c-t>"
+
+" Ctrl-P for fzf
+nmap <C-P> :FZF<CR>
 
 " Focus mode
 function! GoyoBefore()
