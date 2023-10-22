@@ -110,7 +110,7 @@ if __name__ in ["config", "__main__"]:
             '~/.local/bin/launcher-poweroff.sh'))),
         Key([mod], 'q', lazy.spawn(os.path.expanduser(
             '~/.local/bin/launcher-poweroff.sh'))),
-        Key([mod], 'l', lazy.spawn('multilockscreen --lock blur'), desc='Bloquea el escritorio'),
+        Key([mod], 'l', lazy.spawn('loginctl lock-session'), desc='Bloquea el escritorio'),
         Key([mod], 'v', lazy.spawn(os.path.expanduser('~/.local/bin/launcher-clipboard.sh')), desc='Historial del clipboard'),
         Key([mod], ';', lazy.spawn(os.path.expanduser('~/.local/bin/launcher-emoji.sh')), desc='Selector de emoji'),
         Key([mod, SHIFT], 'b', lazy.spawn(os.path.expanduser('~/.local/bin/launcher-bluetooth.sh')), desc='Selector de emoji')
