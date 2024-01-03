@@ -98,7 +98,7 @@ if __name__ in ["config", "__main__"]:
         Key([mod, CTRL], "r", lazy.restart(), desc="Restart qtile"),
         Key([mod, CTRL], "q", lazy.shutdown(), desc="Shutdown qtile"),
         Key([mod], "r", lazy.spawn(os.path.expanduser('~/.local/bin/launcher.sh'))),
-        Key([mod], "b", lazy.spawn('firefox')),
+        Key([mod], "b", lazy.spawn('firefox-esr')),
         Key([mod], "e", lazy.spawn([terminal, '-e', 'ranger'])),
 
         # Sound
@@ -158,7 +158,7 @@ if __name__ in ["config", "__main__"]:
             ),
             widget.Volume(fmt=' {}'),
             widget.LaunchBar(text_only=True, padding=0, progs=[
-                (' ', 'flameshot gui', 'Captura de pantalla'),
+                (' ', 'flameshot launcher', 'Captura de pantalla'),
                 (' ', os.path.expanduser('~/.local/bin/launcher-clipboard.sh'), 'Historial del Clipboard'),
                 # Sleep to prevent bug of vim starting too fast
                 (' ', '{} --working-directory={} -e zsh -c "sleep 0.3; vim todo.md inbox.md incubadora.md"'.format(terminal, os.path.expanduser('~/gestion/tareas')), 'Gestion de tareas' ),
