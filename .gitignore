@@ -3,3 +3,4 @@ __pyicache__
 .install
 .config/ranger/plugins
 .config/nvim/autoload/plug.vim
+.local/share/fonts/.uuid
