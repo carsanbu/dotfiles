@@ -161,7 +161,7 @@ if __name__ in ["config", "__main__"]:
                 (' ', 'flameshot launcher', 'Captura de pantalla'),
                 (' ', os.path.expanduser('~/.local/bin/launcher-clipboard.sh'), 'Historial del Clipboard'),
                 # Sleep to prevent bug of vim starting too fast
-                (' ', '{} --working-directory={} -e zsh -c "sleep 0.3; vim todo.md inbox.md incubadora.md"'.format(terminal, os.path.expanduser('~/gestion/tareas')), 'Gestion de tareas' ),
+                (' ', '{} --working-directory={} -e zsh -c "sleep 0.3; vim -O todo.md inbox.md incubadora.md"'.format(terminal, os.path.expanduser('~/gestion/tareas')), 'Gestion de tareas' ),
                 ]),
             widget.Clock(format=' %H:%M', mouse_callbacks={ 'Button1': notify_date }),
         ]
