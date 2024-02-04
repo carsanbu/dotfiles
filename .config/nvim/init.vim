@@ -39,6 +39,8 @@ Plug 'jxnblk/vim-mdx-js'
 Plug 'tools-life/taskwiki'
 Plug 'preservim/tagbar'
 Plug 'ludovicchabant/vim-gutentags'
+Plug 'godlygeek/tabular'
+Plug 'preservim/vim-markdown'
 call plug#end()
 
 "filetype plugin indent on
