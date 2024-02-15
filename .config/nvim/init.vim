@@ -36,7 +36,6 @@ Plug 'junegunn/goyo.vim'
 Plug 'junegunn/limelight.vim'
 Plug 'eslint/eslint'
 Plug 'jxnblk/vim-mdx-js'
-Plug 'tools-life/taskwiki'
 Plug 'preservim/tagbar'
 Plug 'ludovicchabant/vim-gutentags'
 Plug 'godlygeek/tabular'
@@ -186,9 +185,6 @@ let wiki_1.ext = '.md'
 
 let g:vimwiki_list = [wiki_1]
 let g:vimwiki_ext2syntax = {'.md': 'markdown'}
-
-" taskwiki
-let g:taskwiki_disable_concealcursor = 'yes'
 
 " indentLine
 let g:indentLine_concealcursor = ''
