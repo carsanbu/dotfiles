@@ -99,7 +99,7 @@ if __name__ in ["config", "__main__"]:
         Key([mod, CTRL], "q", lazy.shutdown(), desc="Shutdown qtile"),
         Key([mod], "r", lazy.spawn(os.path.expanduser('~/.local/bin/launcher.sh'))),
         Key([mod], "b", lazy.spawn('firefox-esr')),
-        Key([mod], "e", lazy.spawn([terminal, '-e', 'ranger'])),
+        Key([mod], "e", lazy.spawn('dolphin')),
 
         # Sound
         Key([], "XF86AudioMute", lazy.spawn("amixer -q set Master toggle")),
