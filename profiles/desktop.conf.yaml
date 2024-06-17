@@ -1,0 +1,13 @@
+- defaults:
+    link:
+      relink: true
+      create: true
+
+- clean: ['~']
+
+- link:
+    ~/.config/tmux/tmux.conf: ../unix/tmux/tmux.conf
+    ~/.config/:
+      glob: true
+      path: ../.config/*
+      relink: true
