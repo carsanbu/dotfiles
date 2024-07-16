@@ -5,3 +5,10 @@
 	tool = vimdiff
 [pager]
 	diff =
+[alias]
+	s = status
+	d = diff
+	dc = diff --cached
+[push]
+	autoSetupRemote = true
+
