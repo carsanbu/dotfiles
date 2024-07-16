@@ -3,4 +3,7 @@ __pyicache__
 .install
 .config/ranger/plugins
 .config/nvim/autoload/plug.vim
-.local/share/fonts/.uuid
+.local/share/fonts/**/.uuid
+unix/tmux/plugins/tmux-sensible/
+unix/tmux/plugins/tmux-yank/
+unix/tmux/plugins/vim-tmux-navigator/

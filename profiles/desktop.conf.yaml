@@ -6,7 +6,8 @@
 - clean: ['~']
 
 - link:
-    ~/.config/tmux/tmux.conf: ../unix/tmux/tmux.conf
+    ~/.config/tmux/: ../unix/tmux/
+    ~/.config/tmuxp/: ../unix/tmuxp/
     ~/.config/:
       glob: true
       path: ../.config/*

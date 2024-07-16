@@ -9,11 +9,10 @@ sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.
 
 pip3 install git+https://github.com/will8211/unimatrix.git
 pip3 install qtile iwlib flashfocus neovim-remote ranger-fm
-
+pipx install dotbot
 
 echo "******* LINKING CONFIGS *******"
-stow -t ../.config .config
-stow -t ../.local .local
+dotbot -c profiles/desktop.conf.yaml
 
 echo '[Desktop Entry]
 Name=Qtile
