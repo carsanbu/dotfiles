@@ -6,9 +6,10 @@
 - clean: ['~']
 
 - link:
-    ~/.tmux.conf: unix/tmux/tmux.conf
-    ~/.vim/vimrc: .config/nvim/init.vim
-    ~/.vim/autoload/: .config/nvim/autoload/
-    ~/.vim/colors/: .config/nvim/colors/
-    ~/.vim/spell/: .config/nvim/spell/
+    ~/.tmux.conf: ../unix/tmux/tmux.conf
+    ~/.vim/vimrc: ../.config/nvim/init.vim
+    ~/.vim/autoload/: ../.config/nvim/autoload/
+    ~/.vim/colors/: ../.config/nvim/colors/
+    ~/.vim/spell/: ../.config/nvim/spell/
+    ~/.aliases.sh: ../unix/scripts/aliases.sh
 
