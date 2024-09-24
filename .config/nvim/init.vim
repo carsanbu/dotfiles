@@ -31,7 +31,8 @@ Plug 'leafgarland/typescript-vim'
 Plug 'peitalin/vim-jsx-typescript'
 Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
 Plug 'jparise/vim-graphql'
-Plug 'vimwiki/vimwiki'
+"Plug 'vimwiki/vimwiki'
+Plug 'lervag/wiki.vim'
 Plug 'junegunn/goyo.vim'
 Plug 'junegunn/limelight.vim'
 Plug 'eslint/eslint'
@@ -114,6 +115,11 @@ endif
 nmap <Leader>n :bn<cr>
 nmap <Leader>p :bp<cr>
 " }}}
+
+" Copia al clipboard {{{
+noremap <Leader>y "*y
+" }}}
+
 
 let g:netrw_banner = 0
 let g:netrw_liststyle = 3
