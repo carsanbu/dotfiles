@@ -41,13 +41,18 @@ Plug 'preservim/tagbar'
 Plug 'ludovicchabant/vim-gutentags'
 Plug 'godlygeek/tabular'
 Plug 'preservim/vim-markdown'
+Plug 'williamboman/mason.nvim'
+Plug 'williamboman/mason-lspconfig.nvim'
+Plug 'neovim/nvim-lspconfig'
+Plug 'mfussenegger/nvim-lint'
+Plug 'rshkarin/mason-nvim-lint'
 call plug#end()
 
 "filetype plugin indent on
 " }}}
 
 " Colores {{{
-" Esquema de color. Elegir uno
+" Esquea de color. Elegir uno
 set background=dark
 
 syntax on     " Activa coloreado de sintaxis.
@@ -222,3 +227,9 @@ let g:airline_mode_map = {
       \ }
 endif
 " }}}
+
+if has('nvim')
+lua require('init')
+au BufWritePost * lua require('lint').try_lint()
+endif
+
