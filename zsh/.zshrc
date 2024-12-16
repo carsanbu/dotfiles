@@ -105,6 +105,7 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+source ~/.aliases.sh
 
 # blur
 zmodload zsh/regex
@@ -123,6 +124,8 @@ export TERMCMD="alacritty"
 
 export FZF_DEFAULT_COMMAND='ag --hidden --ignore .git -g ""'
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+
+export WORKSPACE="~/workspace"
 
 # vi mode
 #bindkey -v

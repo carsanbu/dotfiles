@@ -12,3 +12,4 @@
       glob: true
       path: ../.config/*
       relink: true
+    ~/.aliases.sh: ../unix/scripts/aliases.sh

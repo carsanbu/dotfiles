@@ -25,6 +25,7 @@
 
 import os
 import subprocess
+import re
 from typing import List  # noqa: F401
 from datetime import datetime
 from libqtile import bar, layout, widget, hook
@@ -123,8 +124,8 @@ if __name__ in ["config", "__main__"]:
         keys.append(Key([mod, "shift"], str(i), lazy.window.togroup(name))) # Send current window to another group
     # Group 9 is for services
     groups[8].matches = [
-        Match(wm_class=['Syncthing GTK']),
-        Match(wm_class=['KeePassXC'])
+        Match(wm_class=re.compile(r"^(Syncthing\ GTK)$")),
+        Match(wm_class=re.compile(r"^(KeePassXC)$"))
     ]
 
     widget_defaults = dict(
@@ -151,8 +152,8 @@ if __name__ in ["config", "__main__"]:
             widget.CurrentLayoutIcon(scale=0.6),
             widget.Spacer(),
             widget.StatusNotifier(),
-            widget.ThermalSensor(fmt=' {}'),
-            widget.NvidiaSensors(fmt=' {}'),
+            widget.ThermalSensor(fmt='CPU {}'),
+            widget.NvidiaSensors(fmt='GPU {}'),
             widget.GenPollText(func=bt_status, update_interval=5,
                 mouse_callbacks={'Button1': bt_mouse_click},
             ),
@@ -165,7 +166,7 @@ if __name__ in ["config", "__main__"]:
                 ]),
             widget.Clock(format=' %H:%M', mouse_callbacks={ 'Button1': notify_date }),
         ]
-    if os.path.isdir("/sys/module/battery"):
+    if os.path.isdir("/sys/class/power_supply/BAT0"):
         w1.insert(6, Battery(colors))
 
     w2 = [
