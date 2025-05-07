@@ -11,11 +11,14 @@ group_names = [("一", {'layout': 'monadtall'}),
                ("八", {'layout': 'monadtall'}),
                ("十", {'layout': 'monadtall'})]
 
-layout_theme = {'border_width': 1,
-                'margin': 6,
-                'border_focus': colors['green'],
-                'border_normal': colors['gray']
-                }
+layout_theme = {
+        'border_width': 1,
+        'single_border_width': 0,
+        'margin': 6,
+        'single_margin': 0,
+        'border_focus': colors['green'],
+        'border_normal': colors['gray']
+}
 
 layouts = [
     layout.MonadTall(**layout_theme),
