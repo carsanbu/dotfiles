@@ -11,7 +11,7 @@ group_names = [("一", {'layout': 'monadtall'}),
                ("八", {'layout': 'monadtall'}),
                ("十", {'layout': 'monadtall'})]
 
-layout_theme = {'border_width': 0,
+layout_theme = {'border_width': 1,
                 'margin': 6,
                 'border_focus': colors['green'],
                 'border_normal': colors['gray']
