@@ -73,6 +73,7 @@ set tabstop=2     " Espacios que mostramos por tabulador
 set smarttab
 set cindent
 let indent_guides_enable_on_vim_startup = 1
+autocmd Filetype vim setlocal expandtab
 autocmd Filetype html setlocal expandtab
 autocmd Filetype javascript setlocal expandtab
 autocmd Filetype typescript setlocal expandtab
@@ -82,6 +83,7 @@ autocmd Filetype markdown setlocal expandtab
 autocmd Filetype markdown setlocal spell spelllang=en_us,es
 autocmd Filetype markdown.mdx setlocal spell spelllang=en_us,es
 " }}}
+
 
 " UI config {{{
 set number          " Muestra número de lineas.
@@ -174,6 +176,9 @@ let g:UltiSnipsListSnippets="<c-t>"
 " Ctrl-P for fzf
 nmap <C-P> :FZF<CR>
 
+" Yank to system clipboard
+nmap <Leader>y "*y
+
 " Focus mode
 function! GoyoBefore()
   Limelight
@@ -196,6 +201,39 @@ let wiki_1.ext = '.md'
 
 let g:vimwiki_list = [wiki_1]
 let g:vimwiki_ext2syntax = {'.md': 'markdown'}
+
+" wiki.vim
+let g:wiki_root = '~/gestion/conocimiento'
+let g:wiki_filetypes = ['md']
+let g:wiki_link_extension = '.md'
+
+" Use key F2 to show syntax id
+nmap <F2> :echo synIDattr(synID(line("."), col("."), 1), "name")<CR>
+
+" Define a syntax match for wiki links
+function! SetupWikiConceal()
+  " Define a region from [[ to ]] and capture internal link text
+  syntax match wikiLink /\[\[\/\?[^\\\]]\{-}\%(|[^\\\]]\{-}\)\?\]\]/ display contains=@NoSpell,wikiLinkWikiConceal
+  syntax match wikiLinkWikiConceal /\[\[\%(\/\|#\)\?\%([^\\\]]\{-}|\)\?/
+    \ contained transparent contains=NONE conceal
+  syntax match wikiLinkWikiConceal /\]\]/
+    \ contained transparent contains=NONE conceal
+  syntax cluster mkdNonListItem add=wikiLink
+  highlight def link wikiLink Underlined
+endfunction
+
+" Automatically activate in markdown or wiki files
+augroup WikiConceal
+  autocmd!
+  autocmd BufRead,BufNewFile *.md,*.wiki call SetupWikiConceal()
+augroup END
+
+
+" Define a region from [[ to ]] and capture internal link text
+syntax region WikiLink start="\[\[" end="\]\]" contains=WikiLinkText concealends
+" Highlight the actual link text inside [[...]]
+syntax match WikiLinkText /\w\+/ contained
+highlight def link WikiLinkText Underlined
 
 " indentLine
 let g:indentLine_concealcursor = ''
