@@ -8,13 +8,14 @@ run() {
 }
 
 # Compositor
-picom --experimental-backends -b
+picom -b
 
+run dunst
 run keepassxc
 run syncthing-gtk
 run greenclip daemon	# Clipboard history for rofi
 run xss-lock -l -- multilockscreen --lock blur	# Locker
-run flashfocus				# Animation on focus
+#run flashfocus				# Animation on focus
 flatpak run org.openrgb.OpenRGB --server &
 
 # /etc/xdg/autostart mientras no pueda usar https://github.com/jceb/dex 
