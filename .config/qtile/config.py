@@ -225,9 +225,9 @@ if __name__ in ["config", "__main__"]:
     wmname = "LG3D"
 
     # this must be done AFTER all the keys have been defined
-    cheater = terminal + " --class='Cheater' -e sh -c 'echo \"" + show_keys(
+    cheater = terminal + " --class='Cheater' -e sh -c 'echo; fastfetch; echo \"" + show_keys(
         keys
-    ) + "\" | fzf --prompt=\"Search for a keybind: \" --border=rounded --margin=1% --color=dark --height 100% --reverse --header=\"       QTILE CHEAT SHEET \" --info=hidden --header-first'"
+    ) + "\" | fzf --prompt=\"Search for a keybind: \" --border=rounded --margin=1% --color=dark --height 55% --reverse --header=\"       QTILE CHEAT SHEET \" --info=hidden --header-first'"
     keys.extend([
         Key([WIN], "F1", lazy.spawn(cheater), desc="Print keyboard bindings"),
     ])
