@@ -98,7 +98,7 @@ if __name__ in ["config", "__main__"]:
 
         Key([mod, CTRL], "r", lazy.restart(), desc="Restart qtile"),
         Key([mod, CTRL], "q", lazy.shutdown(), desc="Shutdown qtile"),
-        Key([mod], "r", lazy.spawn(os.path.expanduser('~/.local/bin/launcher.sh'))),
+        Key([mod], SPACE, lazy.spawn(os.path.expanduser('~/.local/bin/launcher.sh'))),
         Key([mod], "b", lazy.spawn('firefox-esr')),
         Key([mod], "e", lazy.spawn('dolphin')),
 
