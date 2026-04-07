@@ -35,6 +35,7 @@ from libqtile.utils import guess_terminal
 from layouts import layouts, floating_layout, group_names
 from theme import colors
 from widget.battery import Battery
+from widget.theme_switcher import ThemeSwitcher
 #from widget.wlan import Wlan
 #from widget.keyboard_layout import KeyboardLayout
 from show_keys import show_keys
@@ -192,6 +193,9 @@ if __name__ in ["config", "__main__"]:
             widget.NvidiaSensors(fmt='GPU {}'),
             widget.GenPollText(func=bt_status, update_interval=5,
                 mouse_callbacks={'Button1': bt_mouse_click},
+            ),
+            ThemeSwitcher(
+                foreground=colors["main"],
             ),
             widget.Volume(fmt=' {}'),
             widget.LaunchBar(text_only=True, padding=0, progs=[
