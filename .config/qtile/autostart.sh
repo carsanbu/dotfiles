@@ -11,6 +11,8 @@ run() {
 picom -b
 
 run dunst
+run keepassxc
+run syncthing-gtk
 run greenclip daemon	# Clipboard history for rofi
 run xss-lock -l -- multilockscreen --lock blur	# Locker
 #run flashfocus				# Animation on focus

@@ -29,7 +29,7 @@ import re
 from typing import List  # noqa: F401
 from datetime import datetime
 from libqtile import bar, layout, widget, hook
-from libqtile.config import Click, Drag, Group, Key, Screen, Match, ScratchPad, DropDown
+from libqtile.config import Click, Drag, Group, Key, Screen, Match
 from libqtile.lazy import lazy
 from libqtile.utils import guess_terminal
 from layouts import layouts, floating_layout, group_names
@@ -48,23 +48,6 @@ def notify_date():
     now = datetime.now()
     subprocess.run(['notify-send', '-u', 'low', '-a', 'Fecha',
         now.strftime("%A %d de %B de %Y\n%H:%M:%S %Z").capitalize()])
-
-def summon_window(qtile, match, cmd):
-  moved_window = False
-  for group in qtile.groups:
-    for window in group.windows:
-      if window.match(match):
-        if group.name == qtile.current_group.name:
-          window.kill()
-          return
-        window.togroup(qtile.current_group.name)
-        # position_strawberry(qtile, window)
-        moved_window = True
-        break
-    if moved_window:
-      break
-  if not moved_window:
-    qtile.spawn(cmd)
 
 if __name__ in ["config", "__main__"]:
     # key macros
@@ -132,38 +115,19 @@ if __name__ in ["config", "__main__"]:
         Key([mod], 'l', lazy.spawn('loginctl lock-session'), desc='Bloquea el escritorio'),
         Key([mod], 'v', lazy.spawn(os.path.expanduser('~/.local/bin/launcher-clipboard.sh')), desc='Historial del clipboard'),
         Key([mod], 'semicolon', lazy.spawn(os.path.expanduser('~/.local/bin/launcher-emoji.sh')), desc='Selector de emoji'),
-        Key([mod, SHIFT], 'b', lazy.spawn(os.path.expanduser('~/.local/bin/launcher-bluetooth.sh')), desc='Selector de emoji'),
-        Key([mod], "g", lazy.function(summon_window, Match(wm_class="steam"), "steam")),
-        Key([mod], "F1", lazy.group['scratchpad'].dropdown_toggle('cheater')),
-        Key([mod], "F2", lazy.group['scratchpad'].dropdown_toggle('keepassxc')),
-        Key([mod], "F3", lazy.group['scratchpad'].dropdown_toggle('syncthing-gtk'))
+        Key([mod, SHIFT], 'b', lazy.spawn(os.path.expanduser('~/.local/bin/launcher-bluetooth.sh')), desc='Selector de emoji')
     ]
-
-    # this must be done AFTER all the keys have been defined
-    cheater = terminal + " --class='Cheater' -e sh -c 'echo; fastfetch; echo \"" + show_keys(
-        keys
-    ) + "\" | fzf --prompt=\"Search for a keybind: \" --border=rounded --margin=1% --color=dark --height 55% --reverse --header=\"       QTILE CHEAT SHEET \" --info=hidden --header-first'"
 
     groups = [Group(name, **kwargs) for name, kwargs in group_names]
 
     for i, (name, kwargs) in enumerate(group_names, 1):
         keys.append(Key([mod], str(i), lazy.group[name].toscreen()))        # Switch to another group
         keys.append(Key([mod, "shift"], str(i), lazy.window.togroup(name))) # Send current window to another group
-
-    scratchpad_config = { 'x': 0.05, 'y': 0.05, 'width': 0.9, 'height': 0.9, 'opacity': 1 };
-    groups.append(
-        ScratchPad("scratchpad", [
-            DropDown("cheater", cheater, **scratchpad_config),
-            DropDown("syncthing-gtk","syncthing-gtk", 
-                     match=Match(wm_class=re.compile(r"^(Syncthing\ GTK)$")),
-                     **scratchpad_config),
-            DropDown("keepassxc","keepassxc", 
-                     match=Match(wm_class=re.compile(r"^(KeePassXC)$")),
-                     **scratchpad_config,
-                     on_focus_lost_hide=False)
-            ]
-        ),
-    )
+    # Group 9 is for services
+    groups[8].matches = [
+        Match(wm_class=re.compile(r"^(Syncthing\ GTK)$")),
+        Match(wm_class=re.compile(r"^(KeePassXC)$"))
+    ]
 
     widget_defaults = dict(
         font='CodeNewRoman Nerd Font',
@@ -264,6 +228,13 @@ if __name__ in ["config", "__main__"]:
     # Needed for some Java programs
     wmname = "LG3D"
 
+    # this must be done AFTER all the keys have been defined
+    cheater = terminal + " --class='Cheater' -e sh -c 'echo; fastfetch; echo \"" + show_keys(
+        keys
+    ) + "\" | fzf --prompt=\"Search for a keybind: \" --border=rounded --margin=1% --color=dark --height 55% --reverse --header=\"       QTILE CHEAT SHEET \" --info=hidden --header-first'"
+    keys.extend([
+        Key([WIN], "F1", lazy.spawn(cheater), desc="Print keyboard bindings"),
+    ])
 
 @hook.subscribe.startup
 def autostart():
