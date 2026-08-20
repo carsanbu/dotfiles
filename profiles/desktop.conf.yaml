@@ -7,9 +7,18 @@
 
 - link:
     ~/.config/tmux/: ../unix/tmux/
-    ~/.config/tmuxp/: ../unix/tmuxp/
     ~/.config/:
       glob: true
       path: ../.config/*
-      relink: true
     ~/.aliases.sh: ../unix/scripts/aliases.sh
+    ~/:
+      glob: true
+      path: ../zsh/*
+      prefix: '.'
+    ~/.local/bin:
+      glob: true
+      path: ../.local/bin/*
+    ~/.local/share:
+      glob: true
+      path: ../.local/share/*
+
