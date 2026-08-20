@@ -1,0 +1,36 @@
+[colors.bright]
+black = "0x373b41"
+blue = "0x00c8fe"
+cyan = "0xa0ffe9"
+green = "0xc4ff8b"
+magenta = "0xf2e2ff"
+red = "0xff3e66"
+white = "0xf8f8f8"
+yellow = "0xffec6e"
+
+[colors.normal]
+black = "0x282a2e"
+blue = "0x00c2f8"
+cyan = "0x66ffe6"
+green = "0xa7ff4d"
+magenta = "0xefd7ff"
+red = "0xff2a62"
+white = "0xf8f8f8"
+yellow = "0xfce500"
+
+[colors.primary]
+background = "0x1d1f21"
+foreground = "0xf8f9f7"
+
+[font.bold]
+family = "CodeNewRoman Nerd Font"
+
+[font.italic]
+family = "CodeNewRoman Nerd Font"
+
+[font.normal]
+family = "CodeNewRoman Nerd Font"
+style = "Regular"
+
+[window]
+opacity = 0.4
