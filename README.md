@@ -1,4 +1,4 @@
-# dotfiles.d
+# dotfiles
 
 My config files
 
@@ -7,7 +7,7 @@ My config files
 - Icon Font: Font Awesome
 - Shell: Zsh
 - WM: Qtile
-- Compositor: Jonaburg's Picom
+- Compositor: Picom
 - Term: Alacritty
 - Editor: Neovim
 - Browser: Firefox
