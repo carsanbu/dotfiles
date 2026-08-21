@@ -163,8 +163,8 @@ if __name__ in ["config", "__main__"]:
             widget.CurrentLayout(mode='icon',scale=0.6),
             widget.Spacer(),
             widget.StatusNotifier(),
-            widget.ThermalSensor(fmt='CPU {}'),
-            widget.NvidiaSensors(fmt='GPU {}'),
+            widget.ThermalSensor(fmt=' {}'),
+            widget.NvidiaSensors(fmt=' {}'),
             widget.GenPollText(func=bt_status, update_interval=5,
                 mouse_callbacks={'Button1': bt_mouse_click},
             ),
@@ -184,7 +184,7 @@ if __name__ in ["config", "__main__"]:
                 # Sleep to prevent bug of vim starting too fast
                 (' ', '{} --working-directory={} -e zsh -c "sleep 0.3; vim -O todo.md inbox.md incubadora.md"'.format(terminal, os.path.expanduser('~/gestion/tareas')), 'Gestion de tareas' ),
                 ]),
-            widget.Clock(format=' %H:%M', mouse_callbacks={ 'Button1': notify_date }),
+            widget.Clock(format='󰃰 %H:%M', mouse_callbacks={ 'Button1': notify_date }),
         ]
     if os.path.isdir("/sys/class/power_supply/BAT0"):
         w1.insert(6, Battery(colors))
