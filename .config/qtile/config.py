@@ -40,6 +40,7 @@ from widget.theme_switcher import ThemeSwitcher
 #from widget.keyboard_layout import KeyboardLayout
 from show_keys import show_keys
 from libqtile.widget import backlight
+from libqtile.widget import KeyboardLayout
 
 def bt_status():
    return subprocess.getoutput('/home/carlos/.local/bin/system-bluetooth-bluetoothctl.sh')
@@ -171,6 +172,7 @@ if __name__ in ["config", "__main__"]:
             ThemeSwitcher(
                 foreground=colors["main"],
             ),
+            KeyboardLayout(fmt=' {}', configured_keyboards=['us', 'us(intl)']),
             widget.Volume(fmt=' {}'),
             backlight.Backlight(
                 backlight_name="intel_backlight",  # Check your /sys/class/backlight/ name
