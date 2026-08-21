@@ -12,42 +12,6 @@ filetype off
 set nocompatible
 filetype off
 
-call plug#begin('~/.config/nvim/plugged')
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
-Plug 'chrisbra/colorizer'
-Plug 'airblade/vim-gitgutter'
-Plug 'tpope/vim-fugitive'
-" Plug 'SirVer/ultisnips', {'for': ['sh', 'python', 'markdown', 'c']}
-" Plug 'honza/vim-snippets', {'for': ['sh', 'python', 'markdown', 'c']}
-Plug 'ervandew/supertab'
-Plug 'mhinz/vim-startify'
-Plug 'tpope/vim-surround'
-Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-Plug 'junegunn/fzf.vim'
-Plug 'Yggdroot/indentLine'
-Plug 'pangloss/vim-javascript'
-Plug 'leafgarland/typescript-vim'
-Plug 'peitalin/vim-jsx-typescript'
-Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
-Plug 'jparise/vim-graphql'
-"Plug 'vimwiki/vimwiki'
-Plug 'lervag/wiki.vim'
-Plug 'junegunn/goyo.vim'
-Plug 'junegunn/limelight.vim'
-Plug 'eslint/eslint'
-Plug 'jxnblk/vim-mdx-js'
-Plug 'preservim/tagbar'
-Plug 'ludovicchabant/vim-gutentags'
-Plug 'godlygeek/tabular'
-Plug 'preservim/vim-markdown'
-Plug 'williamboman/mason.nvim'
-Plug 'williamboman/mason-lspconfig.nvim'
-Plug 'neovim/nvim-lspconfig'
-Plug 'mfussenegger/nvim-lint'
-Plug 'rshkarin/mason-nvim-lint'
-call plug#end()
-
 "filetype plugin indent on
 " }}}
 
