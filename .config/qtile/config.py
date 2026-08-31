@@ -260,10 +260,10 @@ if __name__ in ["config", "__main__"]:
         "*": InputConfig(tap=True),
     }
 
-#@hook.subscribe.startup
-#def autostart():
-#    autostart = os.path.expanduser('~/.config/qtile/autostart.sh')
-#    subprocess.call([autostart])
+@hook.subscribe.startup
+def autostart():
+    autostart = os.path.expanduser('~/.config/qtile/autostart.sh')
+    subprocess.call([autostart])
 
 #@hook.subscribe.screen_change
 #def restart_on_randr(qtile, ev):
