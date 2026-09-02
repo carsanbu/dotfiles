@@ -1,7 +1,10 @@
 [Added Associations]
 application/pdf=zathura-3.desktop;zathura-2.desktop;zathura.desktop;
+application/vnd.oasis.opendocument.text=libreoffice-writer.desktop;
 application/zip=org.kde.ark.desktop;org.gnome.FileRoller.desktop;
 inode/directory=org.kde.dolphin.desktop;
+text/csv=libreoffice-calc.desktop;
+text/javascript=com.vscodium.codium.desktop;
 video/mp4=vlc.desktop;
 video/x-msvideo=vlc.desktop;
 x-scheme-handler/geo=qwant-maps-geo-handler.desktop;
@@ -12,14 +15,20 @@ x-scheme-handler/tel=org.kde.kdeconnect.handler.desktop;
 
 [Default Applications]
 application/pdf=zathura-3.desktop;
+application/vnd.oasis.opendocument.text=libreoffice-writer.desktop;
 application/zip=org.kde.ark.desktop;
 image/jpeg=nsxiv.desktop;
 image/png=nsxiv.desktop;
 inode/directory=org.kde.dolphin.desktop;
+text/csv=libreoffice-calc.desktop;
+text/html=org.mozilla.firefox.desktop
+text/javascript=com.vscodium.codium.desktop;
 video/mp4=vlc.desktop;
 video/x-msvideo=vlc.desktop;
+x-scheme-handler/about=org.mozilla.firefox.desktop
 x-scheme-handler/geo=qwant-maps-geo-handler.desktop;
-x-scheme-handler/http=firefox-esr.desktop
-x-scheme-handler/https=firefox-esr.desktop
+x-scheme-handler/http=org.mozilla.firefox.desktop
+x-scheme-handler/https=org.mozilla.firefox.desktop
 x-scheme-handler/mailto=org.kde.kmail2.desktop;
 x-scheme-handler/tel=org.kde.kdeconnect.handler.desktop;
+x-scheme-handler/unknown=org.mozilla.firefox.desktop
