@@ -1,4 +1,7 @@
 #!/usr/bin/env bash
+export XDG_CURRENT_DESKTOP=qtile
+systemctl --user import-environment DISPLAY XAUTHORITY
+dbus-update-activation-environment --systemd DISPLAY XAUTHORITY
 
 # If the process doesn't exists, start one in background
 run() {
