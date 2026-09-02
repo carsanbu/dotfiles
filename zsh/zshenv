@@ -1,5 +1,4 @@
-source "$HOME/.cargo/env"
-. "$HOME/.cargo/env"
+[ -f "$HOME/.cargo/env" ] && source "$HOME/.cargo/env"
 
 path+=('/home/carlos/.local/bin')
 path+=('/home/carlos/.cargo/bin')

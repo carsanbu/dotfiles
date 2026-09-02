@@ -26,6 +26,7 @@
 import os
 import subprocess
 import re
+import platform
 from typing import List  # noqa: F401
 from datetime import datetime
 from libqtile import bar, layout, widget, hook
@@ -39,6 +40,8 @@ from widget.theme_switcher import ThemeSwitcher
 #from widget.wlan import Wlan
 #from widget.keyboard_layout import KeyboardLayout
 from show_keys import show_keys
+from libqtile.widget import backlight
+from libqtile.widget import KeyboardLayout
 
 def bt_status():
    return subprocess.getoutput('/home/carlos/.local/bin/system-bluetooth-bluetoothctl.sh')
@@ -48,6 +51,8 @@ def notify_date():
     now = datetime.now()
     subprocess.run(['notify-send', '-u', 'low', '-a', 'Fecha',
         now.strftime("%A %d de %B de %Y\n%H:%M:%S %Z").capitalize()])
+def os_is_arch():
+    platform.freedesktop_os_release()["ID"] == 'arch'
 
 if __name__ in ["config", "__main__"]:
     # key macros
@@ -97,7 +102,7 @@ if __name__ in ["config", "__main__"]:
         Key([mod], TAB, lazy.next_layout(), desc="Toggle between layouts"),
         Key([mod], "w", lazy.window.kill(), desc="Kill focused window"),
 
-        Key([mod, CTRL], "r", lazy.restart(), desc="Restart qtile"),
+        Key([mod, CTRL], "r", lazy.reload_config(), desc="Reload qtile config"),
         Key([mod, CTRL], "q", lazy.shutdown(), desc="Shutdown qtile"),
         Key([mod], SPACE, lazy.spawn(os.path.expanduser('~/.local/bin/launcher.sh'))),
         Key([mod], "b", lazy.spawn(["bash", "-c", 'gtk-launch "$(xdg-mime query default x-scheme-handler/http)"'])),
@@ -107,6 +112,10 @@ if __name__ in ["config", "__main__"]:
         Key([], "XF86AudioMute", lazy.spawn("amixer -q set Master toggle")),
         Key([], "XF86AudioLowerVolume", lazy.spawn("amixer -c 0 sset Master 1- unmute")),
         Key([], "XF86AudioRaiseVolume", lazy.spawn("amixer -c 0 sset Master 1+ unmute")),
+        # Screen
+        Key([], "XF86MonBrightnessUp", lazy.widget['backlight'].change_backlight(backlight.ChangeDirection.UP)),
+        Key([], "XF86MonBrightnessDown", lazy.widget['backlight'].change_backlight(backlight.ChangeDirection.DOWN)),
+
         # Power off
         Key([], 'XF86PowerOff', lazy.spawn(os.path.expanduser(
             '~/.local/bin/launcher-poweroff.sh'))),
@@ -118,9 +127,14 @@ if __name__ in ["config", "__main__"]:
         Key([mod, SHIFT], 'b', lazy.spawn(os.path.expanduser('~/.local/bin/launcher-bluetooth.sh')), desc='Selector de emoji')
     ]
 
-    groups = [Group(name, **kwargs) for name, kwargs in group_names]
+    # this must be done AFTER all the keys have been defined
+    cheater = terminal + " --class='Cheater' -e sh -c 'echo; fastfetch; echo \"" + show_keys(
+        keys
+    ) + "\" | fzf --prompt=\"Search for a keybind: \" --border=rounded --margin=1% --color=dark --height 55% --reverse --header=\"       QTILE CHEAT SHEET \" --info=hidden --header-first'"
 
-    for i, (name, kwargs) in enumerate(group_names, 1):
+    groups = [Group(name) for name in group_names]
+
+    for i, name in enumerate(group_names, 1):
         keys.append(Key([mod], str(i), lazy.group[name].toscreen()))        # Switch to another group
         keys.append(Key([mod, "shift"], str(i), lazy.window.togroup(name))) # Send current window to another group
     # Group 9 is for services
@@ -130,12 +144,13 @@ if __name__ in ["config", "__main__"]:
     ]
 
     widget_defaults = dict(
-        font='CodeNewRoman Nerd Font',
+        font='CodeNewRoman Nerd Font, Noto Sans CJK JP',
         fontsize=18,
         padding=8,
         foreground=colors['main'],
     )
 
+    package_distro = 'Arch_Sup' if os_is_arch() else 'Debian'
     extension_defaults = widget_defaults.copy()
     w1 = [
             widget.WindowName(),
@@ -150,26 +165,34 @@ if __name__ in ["config", "__main__"]:
                 chords_colors={ 'launch': ("#ff0000", "#ffffff") },
                 name_transform=lambda name: name.upper(),
             ),
-            widget.CurrentLayoutIcon(scale=0.6),
+            widget.CurrentLayout(mode='icon',scale=0.6),
             widget.Spacer(),
             widget.StatusNotifier(),
-            widget.ThermalSensor(fmt='CPU {}'),
-            widget.NvidiaSensors(fmt='GPU {}'),
+            widget.ThermalSensor(fmt=' {}'),
+            widget.NvidiaSensors(fmt=' {}'),
             widget.GenPollText(func=bt_status, update_interval=5,
                 mouse_callbacks={'Button1': bt_mouse_click},
             ),
             ThemeSwitcher(
                 foreground=colors["main"],
             ),
+            KeyboardLayout(fmt=' {}', configured_keyboards=['us', 'us(intl)']),
             widget.Volume(fmt=' {}'),
-            widget.LaunchBar(text_only=True, padding=0, progs=[
+            widget.CheckUpdates(distro=package_distro, no_update_string='', display_format=' {updates}' ),
+            widget.LaunchBar(text_only=True, padding=4, progs=[
                 (' ', 'flameshot launcher', 'Captura de pantalla'),
                 (' ', os.path.expanduser('~/.local/bin/launcher-clipboard.sh'), 'Historial del Clipboard'),
                 # Sleep to prevent bug of vim starting too fast
                 (' ', '{} --working-directory={} -e zsh -c "sleep 0.3; vim -O todo.md inbox.md incubadora.md"'.format(terminal, os.path.expanduser('~/gestion/tareas')), 'Gestion de tareas' ),
                 ]),
-            widget.Clock(format=' %H:%M', mouse_callbacks={ 'Button1': notify_date }),
+            widget.Clock(format='󰃰 %H:%M', mouse_callbacks={ 'Button1': notify_date }),
         ]
+    if os.path.isdir("/sys/class/backlight/intel_backlight"):
+        w1.insert(9, backlight.Backlight(
+                backlight_name="intel_backlight",  # Check your /sys/class/backlight/ name
+                format=" {percent:2.0%}",
+                change_command="brightnessctl set {0}%",  # Optional external tool
+            )),
     if os.path.isdir("/sys/class/power_supply/BAT0"):
         w1.insert(6, Battery(colors))
 
@@ -185,7 +208,7 @@ if __name__ in ["config", "__main__"]:
                 chords_colors={ 'launch': ("#ff0000", "#ffffff") },
                 name_transform=lambda name: name.upper(),
             ),
-            widget.CurrentLayoutIcon(scale=0.6),
+            widget.CurrentLayout(mode='icon',scale=0.6),
             widget.Spacer(),
             widget.StatusNotifier(),
             #Wlan(colors),
@@ -236,13 +259,21 @@ if __name__ in ["config", "__main__"]:
         Key([WIN], "F1", lazy.spawn(cheater), desc="Print keyboard bindings"),
     ])
 
+try:
+    from libqtile.backend.wayland import InputConfig
+    wl_input_rules = {
+        "*": InputConfig(tap=True),
+    }
+except Exception:
+    pass
+
 @hook.subscribe.startup
 def autostart():
     autostart = os.path.expanduser('~/.config/qtile/autostart.sh')
     subprocess.call([autostart])
 
-@hook.subscribe.screen_change
-def restart_on_randr(qtile, ev):
-    '''Restart on screen change'''
-    qtile.cmd_restart()
+#@hook.subscribe.screen_change
+#def restart_on_randr(qtile, ev):
+#    '''Restart on screen change'''
+#    qtile.cmd_restart()
 

@@ -1,15 +1,15 @@
 from libqtile import layout
 from theme import colors
 
-group_names = [("一", {'layout': 'monadtall'}),
-               ("二", {'layout': 'monadtall'}),
-               ("三", {'layout': 'monadtall'}),
-               ("四", {'layout': 'monadtall'}),
-               ("五", {'layout': 'monadtall'}),
-               ("六", {'layout': 'monadtall'}),
-               ("七", {'layout': 'monadtall'}),
-               ("八", {'layout': 'monadtall'}),
-               ("十", {'layout': 'monadtall'})]
+group_names = ["一",
+               "二",
+               "三",
+               "四",
+               "五",
+               "六",
+               "七",
+               "八",
+               "十"]
 
 layout_theme = {
         'border_width': 1,
@@ -37,7 +37,7 @@ layouts = [
     # layout.Zoomy(),
 ]
 
-floating_layout = layout.Floating(**layout_theme, float_rules=[
+floating_layout = layout.Floating(float_rules=[
     # Run the utility of `xprop` to see the wm class and name of an X client.
     *layout.Floating.default_float_rules,
 #    {'wmclass': 'confirm'},

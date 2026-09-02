@@ -3,22 +3,27 @@ export XDG_CURRENT_DESKTOP=qtile
 systemctl --user import-environment DISPLAY XAUTHORITY
 dbus-update-activation-environment --systemd DISPLAY XAUTHORITY
 
-# If the process doesn't exists, start one in background
+# If the process doesn't exists and the executable exists, start one in background
 run() {
+	command -v $1 >/dev/null 2>&1 || return
 	if ! pgrep $1 ; then
 		$@ &
 	fi
 }
 
-# Compositor
-picom -b
+if [ $XDG_SESSION_TYPE != "wayland" ]; then
+	# Compositor
+	picom -b
+	# Notificaciones
+	run dunst
+	# Bloqueo de pantalla
+	run xss-lock -l -- multilockscreen --lock blur	# Locker
+	#run flashfocus				# Animation on focus
+fi
 
-run dunst
 run keepassxc
 run syncthing-gtk
 run greenclip daemon	# Clipboard history for rofi
-run xss-lock -l -- multilockscreen --lock blur	# Locker
-#run flashfocus				# Animation on focus
 flatpak run org.openrgb.OpenRGB --server &
 
 # /etc/xdg/autostart mientras no pueda usar https://github.com/jceb/dex 
