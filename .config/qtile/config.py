@@ -100,7 +100,7 @@ if __name__ in ["config", "__main__"]:
         Key([mod, CTRL], "r", lazy.restart(), desc="Restart qtile"),
         Key([mod, CTRL], "q", lazy.shutdown(), desc="Shutdown qtile"),
         Key([mod], SPACE, lazy.spawn(os.path.expanduser('~/.local/bin/launcher.sh'))),
-        Key([mod], "b", lazy.spawn('firefox-esr')),
+        Key([mod], "b", lazy.spawn(["bash", "-c", 'gtk-launch "$(xdg-mime query default x-scheme-handler/http)"'])),
         Key([mod], "e", lazy.spawn('dolphin')),
 
         # Sound
