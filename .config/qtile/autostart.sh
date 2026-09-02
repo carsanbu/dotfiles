@@ -1,7 +1,8 @@
 #!/usr/bin/env bash
 
-# If the process doesn't exists, start one in background
+# If the process doesn't exists and the executable exists, start one in background
 run() {
+	command -v $1 >/dev/null 2>&1 || return
 	if ! pgrep $1 ; then
 		$@ &
 	fi
@@ -23,7 +24,7 @@ run greenclip daemon	# Clipboard history for rofi
 flatpak run org.openrgb.OpenRGB --server &
 
 # /etc/xdg/autostart mientras no pueda usar https://github.com/jceb/dex 
-#run /usr/lib/x86_64-linux-gnu/libexec/polkit-kde-authentication-agent-1
+run /usr/lib/x86_64-linux-gnu/libexec/polkit-kde-authentication-agent-1
 
 # Notificaciones
 #run $HOME/.local/bin/deadd-notification-center
