@@ -14,12 +14,13 @@ run() {
 if [ $XDG_SESSION_TYPE != "wayland" ]; then
 	# Compositor
 	picom -b
-	# Notificaciones
-	run dunst
 	# Bloqueo de pantalla
 	run xss-lock -l -- multilockscreen --lock blur	# Locker
 	#run flashfocus				# Animation on focus
 fi
+
+# Notificaciones
+run dunst
 
 run keepassxc
 run syncthing-gtk
