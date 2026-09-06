@@ -2,8 +2,6 @@
 sudo ./scripts/installdeps.sh
 
 ./scripts/installZSH.sh 
-./unix/scripts/install_deps_terminal.sh
-
 echo "******* INSTALLING PACKAGES *******"
 sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
        https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
@@ -27,20 +25,6 @@ curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
 source $HOME/.cargo/env
 
 mkdir -p .install && cd .install
-
-echo "******* INSTALLING ALACRITTY *******"
-(
-	# TODO: Comprobar que alacrity no está instalado
-	git clone https://github.com/alacritty/alacritty.git && cd alacritty
-	rustup override set stable
-	rustup update stable
-	cargo build --release
-
-	cp target/release/alacritty /usr/local/bin # or anywhere else in $PATH
-	cp extra/logo/alacritty-term.svg /usr/share/pixmaps/Alacritty.svg
-	desktop-file-install extra/linux/Alacritty.desktop
-	update-desktop-database
-)
 
 echo "******* INSTALLING LOCKSCREEN *******"
 (
