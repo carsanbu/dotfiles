@@ -140,7 +140,9 @@ if __name__ in ["config", "__main__"]:
     # Group 9 is for services
     groups[8].matches = [
         Match(wm_class=re.compile(r"^(Syncthing\ GTK)$")),
-        Match(wm_class=re.compile(r"^(KeePassXC)$"))
+        Match(wm_class=re.compile(r"^(KeePassXC)$")),
+        Match(wm_class=re.compile(r"^(syncthing-gtk)$")),
+        Match(wm_class=re.compile(r"^(org\.keepassxc\.KeePassXC)$"))
     ]
 
     widget_defaults = dict(
