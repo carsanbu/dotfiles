@@ -225,7 +225,7 @@ if __name__ in ["config", "__main__"]:
     screens = [
         Screen(
             top=bar.Bar(w1, 28, background='#000000f0', opacity=0.7),
-            wallpaper='~/.local/share/wallpapers/litox9_backwards_man_far_in_neotokio_cyberpunk_city_with_neons__3134cfec-49a1-4b76-b1f0-d6a88c5794e5.png',
+            wallpaper='~/.local/share/wallpapers/litox9_in_the_foreground_backwards_man_in_the_backgrund_cyberpu_bc879c0f-70fa-4bb4-bf3d-3347b767591e.png',
             wallpaper_mode='stretch',
             ),
         #Screen(top=bar.Bar(w2, 28, background='#000000', opacity=0.7))
