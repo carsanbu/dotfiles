@@ -17,6 +17,12 @@ if [ $XDG_SESSION_TYPE != "wayland" ]; then
 	# Bloqueo de pantalla
 	run xss-lock -l -- multilockscreen --lock blur	# Locker
 	#run flashfocus				# Animation on focus
+else
+	# Wayland (qtile): swayidle usa ext-idle-notify-v1 y swaylock ext-session-lock-v1
+	# La config de swaylock está en ~/.config/swaylock/config
+	run swayidle -w \
+		timeout 300 'swaylock -f' \
+		before-sleep 'swaylock -f'
 fi
 
 # Notificaciones

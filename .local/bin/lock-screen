@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+
+# Bloquea la sesión según el tipo de sesión:
+# - Wayland: swaylock habla directamente con el compositor (ext-session-lock-v1).
+# - X11: logind notifica a xss-lock, que lanza multilockscreen.
+if [ "${XDG_SESSION_TYPE:-}" = "wayland" ]
+then
+	exec swaylock -f
+else
+	exec loginctl lock-session "${XDG_SESSION_ID-}"
+fi
