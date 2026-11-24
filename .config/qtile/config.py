@@ -178,7 +178,7 @@ if __name__ in ["config", "__main__"]:
             ThemeSwitcher(
                 foreground=colors["main"],
             ),
-            KeyboardLayout(fmt=' {}', configured_keyboards=['us', 'us(intl)']),
+            KeyboardLayout(fmt=' {}', configured_keyboards=['us(intl)', 'us']),
             widget.Volume(fmt=' {}'),
             widget.CheckUpdates(distro=package_distro, no_update_string='', display_format=' {updates}' ),
             widget.LaunchBar(text_only=True, padding=4, progs=[
